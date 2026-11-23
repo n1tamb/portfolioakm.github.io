@@ -28,7 +28,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 }
 
 .skip-link:not(:focus) { transform: translateY(calc(-100% - 1rem)); }
-html { scroll-padding-block-start: 5rem; }
+html { scroll-padding-block-start: 1rem; }
 
 .wrap {
   width: min(calc(100% - 32px), 72rem);
@@ -36,26 +36,18 @@ html { scroll-padding-block-start: 5rem; }
 }
 
 .masthead {
-  position: sticky;
-  top: 0;
-  z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
   min-height: 70px;
   border-bottom: 1px solid var(--rule);
-  background: var(--canvas);
 }
 
-.signature, .home-link {
+.signature {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  gap: 9px;
   font-weight: 650;
 }
-
-.signature { gap: 9px; text-decoration: none; }
 
 .signature img {
   width: 32px;
@@ -63,18 +55,6 @@ html { scroll-padding-block-start: 5rem; }
   border: 1px solid var(--rule);
   border-radius: 6px;
 }
-
-.home-link {
-  color: var(--accent);
-  padding-inline: .8rem;
-  border: 1px solid #7d4c63;
-  border-radius: 7px;
-  font-size: .9375rem;
-  text-decoration: none;
-}
-
-.signature:hover, .home-link:hover { color: #ffd4dd; }
-.home-link:hover { background: #34212d; }
 
 .intro {
   max-width: 38rem;
@@ -162,7 +142,7 @@ h1 {
 
   .intro {
     position: sticky;
-    top: 6.5rem;
+    top: 1.25rem;
     padding-block: .95rem 0;
     border-top: 3px solid #a55373;
   }
