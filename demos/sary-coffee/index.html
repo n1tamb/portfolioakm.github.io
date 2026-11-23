@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6e8d7">
+  <title>Sary Coffee · Демосайт</title>
+  <meta name="description" content="Фильтр-кофе, эспрессо и выпечка.">
+  <link rel="icon" href="../../assets/avatar.jpg" type="image/jpeg">
+
+  <link rel="stylesheet" href="../../assets/demo.css">
+  <script src="../../assets/site-links.js" defer></script>
+  <script src="../../assets/demo.js" defer></script>
+</head>
+<body class="coffee">
+  <header class="demo-bar">
+    <nav class="shell" aria-label="Навигация демосайта">
+      <a href="../../#work-sary-coffee" data-local-index>К портфолио</a>
+      <span>Демосайт</span>
+      <a href="../../kk/demos/sary-coffee/" data-local-index hreflang="kk" lang="kk">Қазақша</a>
+    </nav>
+  </header>
+  <main class="shell">
+    <section class="coffee-hero">
+      <div class="coffee-intro">
+        <h1 translate="no">Sary Coffee</h1>
+        <p>Фильтр-кофе, эспрессо и выпечка.</p>
+        <p class="details"><span>Актобе</span><span>08:00–20:00</span></p>
+        <a class="button" href="#menu">Смотреть меню</a>
+      </div>
+      <img src="../../assets/coffee.jpg" width="1600" height="1057" alt="" fetchpriority="high">
+    </section>
+    <section class="page-section" id="menu" aria-labelledby="menu-heading">
+      <h2 id="menu-heading">Меню кофейни</h2>
+      <p class="order-note" id="order-note" hidden>Пробный заказ. Он не отправляется в кофейню.</p>
+      <noscript><p class="order-note">Для расчёта заказа нужен JavaScript.</p></noscript>
+      <form id="sample-order" autocomplete="off">
+        <div class="order-total" hidden>
+          <span><span id="total-label">Итого</span> <output id="price-total" aria-labelledby="total-label">0 ₸</output></span>
+          <button type="reset" aria-label="Очистить заказ">Очистить</button>
+        </div>
+        <div class="menu-grid">
+        <section class="menu-category" aria-labelledby="hot-heading">
+          <h3 id="hot-heading">Кофе</h3>
+          <ul>
+            <li class="menu-item">
+              <div><h4>Капучино</h4><p>Эспрессо и молоко, 250 мл</p></div>
+              <div class="menu-selection">
+                <strong>1 200 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Уменьшить количество — Капучино" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1200" aria-label="Количество — Капучино">
+                  <button type="button" data-step="1" aria-label="Увеличить количество — Капучино" hidden>+</button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div><h4>Фильтр-кофе</h4><p>Кофе на зерне дня, 250 мл</p></div>
+              <div class="menu-selection">
+                <strong>1 100 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Уменьшить количество — Фильтр-кофе" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1100" aria-label="Количество — Фильтр-кофе">
+                  <button type="button" data-step="1" aria-label="Увеличить количество — Фильтр-кофе" hidden>+</button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div><h4>Раф с ванилью</h4><p>Эспрессо, сливки и ваниль, 300 мл</p></div>
+              <div class="menu-selection">
+                <strong>1 700 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Уменьшить количество — Раф с ванилью" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1700" aria-label="Количество — Раф с ванилью">
+                  <button type="button" data-step="1" aria-label="Увеличить количество — Раф с ванилью" hidden>+</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="menu-category" aria-labelledby="food-heading">
+          <h3 id="food-heading">Выпечка</h3>
+          <ul>
+            <li class="menu-item">
+              <div><h4>Миндальный круассан</h4><p>Слоёное тесто и миндальный крем</p></div>
+              <div class="menu-selection">
+                <strong>1 550 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Уменьшить количество — Миндальный круассан" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1550" aria-label="Количество — Миндальный круассан">
+                  <button type="button" data-step="1" aria-label="Увеличить количество — Миндальный круассан" hidden>+</button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div><h4>Банановый хлеб</h4><p>Ломтик с грецкими орехами</p></div>
+              <div class="menu-selection">
+                <strong>1 150 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Уменьшить количество — Банановый хлеб" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1150" aria-label="Количество — Банановый хлеб">
+                  <button type="button" data-step="1" aria-label="Увеличить количество — Банановый хлеб" hidden>+</button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div><h4>Шоколадное печенье</h4><p>С тёмным шоколадом и щепоткой соли</p></div>
+              <div class="menu-selection">
+                <strong>850 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Уменьшить количество — Шоколадное печенье" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="850" aria-label="Количество — Шоколадное печенье">
+                  <button type="button" data-step="1" aria-label="Увеличить количество — Шоколадное печенье" hidden>+</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer class="demo-footer shell">
+    <span>Sary Coffee · Фото для иллюстрации</span>
+    <a href="../../#work-sary-coffee" data-local-index>К портфолио</a>
+  </footer>
+</body>
+</html>

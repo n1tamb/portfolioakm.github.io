@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../../../assets/avatar.jpg" type="image/jpeg">
+  <meta name="theme-color" content="#181311">
+  <title>QYR · Барбершоптың демосайты</title>
+  <meta name="description" content="Ерлерге шаш қию — 5 500 ₸, 45 минут.">
+  <link rel="stylesheet" href="../../../assets/barber.css">
+  <script src="../../../assets/site-links.js" defer></script>
+  <script src="../../../assets/barber.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <nav class="shell" aria-label="Демосайт навигациясы">
+      <a href="../../../#work-qyr" data-local-index>Портфолиоға</a>
+      <span>Демосайт</span>
+      <a href="../../../demos/qyr/" data-local-index lang="ru" hreflang="ru">Русский</a>
+    </nav>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="brand" translate="no">QYR</p>
+        <p class="location">Ақтөбе · 10:00–20:00</p>
+        <h1>Шаш қию, сақал күтімі</h1>
+        <p class="lead">Ерлерге шаш қию — 5 500 ₸, 45 минут.</p>
+        <div class="hero-actions">
+          <a class="button" href="#booking">Жазылып көру</a>
+          <a class="map-link" href="https://2gis.kz/aktobe">Ақтөбе 2GIS-те</a>
+        </div>
+      </div>
+      <img src="../../../assets/barber.jpg" alt="" width="1500" height="1000" fetchpriority="high">
+    </section>
+    <div class="details">
+      <div>
+        <section aria-labelledby="services">
+          <h2 id="services">Қызметтер мен бағалар</h2>
+          <ul class="services">
+          <li><a href="#booking" data-service="cut"><span><strong>Ерлерге арналған шаш қию</strong><small>45 мин</small></span><span class="price">5 500 ₸</span></a></li>
+          <li><a href="#booking" data-service="beard"><span><strong>Сақалды реттеу</strong><small>30 мин</small></span><span class="price">3 500 ₸</span></a></li>
+          <li><a href="#booking" data-service="combo"><span><strong>Шаш қию және сақалды реттеу</strong><small>75 мин</small></span><span class="price">8 000 ₸</span></a></li>
+          <li><a href="#booking" data-service="kids"><span><strong>Балаларға арналған шаш қию</strong><small>40 мин</small></span><span class="price">4 500 ₸</span></a></li>
+          </ul>
+        </section>
+        <section class="team" aria-labelledby="team">
+          <h2 id="team">Шеберлер</h2>
+          <div class="team-list">
+            <div class="person"><h3>Әлихан</h3><p>Фейд және қысқа шаш үлгілері</p></div>
+            <div class="person"><h3>Данияр</h3><p>Классикалық шаш үлгілері және сақал күтімі</p></div>
+          </div>
+        </section>
+      </div>
+      <section class="booking" id="booking" aria-labelledby="booking-title">
+        <h2 id="booking-title">Сынақ жазылымы</h2>
+        <p class="booking-note" id="booking-note">Бағалар мен уақыт үлгі ретінде берілген. Форма таңдауыңызды көрсетеді, өтінім жіберілмейді.</p>
+        <noscript><p>Сынақ жазылымы үшін JavaScript қажет.</p></noscript>
+        <form id="booking-form" aria-describedby="booking-note">
+          <label class="field"><span>Қызмет</span>
+            <select name="service" required>
+              <option value="cut" data-minutes="45">Ерлерге арналған шаш қию · 5 500 ₸</option>
+              <option value="beard" data-minutes="30">Сақалды реттеу · 3 500 ₸</option>
+              <option value="combo" data-minutes="75">Шаш қию және сақалды реттеу · 8 000 ₸</option>
+              <option value="kids" data-minutes="40">Балаларға арналған шаш қию · 4 500 ₸</option>
+            </select>
+          </label>
+          <label class="field"><span>Шебер</span>
+            <select name="artist">
+              <option>Кез келген шебер</option>
+              <option>Әлихан</option>
+              <option>Данияр</option>
+            </select>
+          </label>
+          <div class="date-row">
+            <label class="field"><span>Күн</span><input type="date" name="day" required></label>
+            <label class="field"><span>Уақыт (UTC+5)</span>
+              <select name="time" aria-describedby="slot-warning" required></select>
+            </label>
+          </div>
+          <p class="booking-note" id="time-note" role="status" hidden>Сынақ уақытын көру үшін басқа күнді таңдаңыз.</p>
+          <p class="booking-note" id="slot-warning" role="status"></p>
+          <button type="submit" class="button">Таңдауды тексеру</button>
+        </form>
+        <div class="receipt" id="receipt" hidden>
+          <output id="booking-summary" form="booking-form" tabindex="-1"></output>
+          <p>Демонстрация аяқталды. Шебердің уақыты брондалған жоқ.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer shell">
+    <span>QYR · ойдан шығарылған барбершоп</span>
+    <a href="../../../#work-qyr" data-local-index>Портфолиоға</a>
+  </footer>
+</body>
+</html>

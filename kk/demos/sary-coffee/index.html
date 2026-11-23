@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6e8d7">
+  <title>Sary Coffee · Демосайт</title>
+  <meta name="description" content="Сүзгіленген кофе, эспрессо және пісірмелер.">
+  <link rel="icon" href="../../../assets/avatar.jpg" type="image/jpeg">
+
+  <link rel="stylesheet" href="../../../assets/demo.css">
+  <script src="../../../assets/site-links.js" defer></script>
+  <script src="../../../assets/demo.js" defer></script>
+</head>
+<body class="coffee">
+  <header class="demo-bar">
+    <nav class="shell" aria-label="Демосайт навигациясы">
+      <a href="../../../#work-sary-coffee" data-local-index>Портфолиоға</a>
+      <span>Демосайт</span>
+      <a href="../../../demos/sary-coffee/" data-local-index hreflang="ru" lang="ru">Русский</a>
+    </nav>
+  </header>
+  <main class="shell">
+    <section class="coffee-hero">
+      <div class="coffee-intro">
+        <h1 translate="no">Sary Coffee</h1>
+        <p>Сүзгіленген кофе, эспрессо және пісірмелер.</p>
+        <p class="details"><span>Ақтөбе</span><span>08:00–20:00</span></p>
+        <a class="button" href="#menu">Мәзірді қарау</a>
+      </div>
+      <img src="../../../assets/coffee.jpg" width="1600" height="1057" alt="" fetchpriority="high">
+    </section>
+    <section class="page-section" id="menu" aria-labelledby="menu-heading">
+      <h2 id="menu-heading">Кофехана мәзірі</h2>
+      <p class="order-note" id="order-note" hidden>Бұл — сынақ тапсырысы. Ол кофеханаға жіберілмейді.</p>
+      <noscript><p class="order-note">Тапсырысты есептеу үшін JavaScript қажет.</p></noscript>
+      <form id="sample-order" autocomplete="off">
+        <div class="order-total" hidden>
+          <span><span id="total-label">Барлығы</span> <output id="price-total" aria-labelledby="total-label">0 ₸</output></span>
+          <button type="reset" aria-label="Себетті тазалау">Тазалау</button>
+        </div>
+        <div class="menu-grid">
+        <section class="menu-category" aria-labelledby="hot-heading">
+          <h3 id="hot-heading">Кофе</h3>
+          <ul>
+            <li class="menu-item">
+              <div><h4>Капучино</h4><p>Эспрессо мен сүт, 250 мл</p></div>
+              <div class="menu-selection">
+                <strong>1 200 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Санын азайту — Капучино" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1200" aria-label="Саны — Капучино">
+                  <button type="button" data-step="1" aria-label="Санын көбейту — Капучино" hidden>+</button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div><h4>Сүзгіленген кофе</h4><p>Сол күнгі кофе дәнінен, 250 мл</p></div>
+              <div class="menu-selection">
+                <strong>1 100 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Санын азайту — Сүзгіленген кофе" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1100" aria-label="Саны — Сүзгіленген кофе">
+                  <button type="button" data-step="1" aria-label="Санын көбейту — Сүзгіленген кофе" hidden>+</button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div><h4>Ванильді раф</h4><p>Эспрессо, кілегей және ваниль, 300 мл</p></div>
+              <div class="menu-selection">
+                <strong>1 700 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Санын азайту — Ванильді раф" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1700" aria-label="Саны — Ванильді раф">
+                  <button type="button" data-step="1" aria-label="Санын көбейту — Ванильді раф" hidden>+</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="menu-category" aria-labelledby="food-heading">
+          <h3 id="food-heading">Пісірмелер</h3>
+          <ul>
+            <li class="menu-item">
+              <div><h4>Бадамды круассан</h4><p>Қатпарлы қамыр мен бадам кремі</p></div>
+              <div class="menu-selection">
+                <strong>1 550 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Санын азайту — Бадамды круассан" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1550" aria-label="Саны — Бадамды круассан">
+                  <button type="button" data-step="1" aria-label="Санын көбейту — Бадамды круассан" hidden>+</button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div><h4>Банан наны</h4><p>Жаңғақ қосылған бір тілім</p></div>
+              <div class="menu-selection">
+                <strong>1 150 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Санын азайту — Банан наны" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="1150" aria-label="Саны — Банан наны">
+                  <button type="button" data-step="1" aria-label="Санын көбейту — Банан наны" hidden>+</button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div><h4>Шоколадты печенье</h4><p>Қара шоколад және аздап тұз</p></div>
+              <div class="menu-selection">
+                <strong>850 ₸</strong>
+                <div class="quantity" hidden>
+                  <button type="button" data-step="-1" aria-label="Санын азайту — Шоколадты печенье" hidden>−</button>
+                  <input type="number" min="0" max="12" step="1" value="0" inputmode="numeric" data-price="850" aria-label="Саны — Шоколадты печенье">
+                  <button type="button" data-step="1" aria-label="Санын көбейту — Шоколадты печенье" hidden>+</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer class="demo-footer shell">
+    <span>Sary Coffee · Иллюстрациялық фотосурет</span>
+    <a href="../../../#work-sary-coffee" data-local-index>Портфолиоға</a>
+  </footer>
+</body>
+</html>

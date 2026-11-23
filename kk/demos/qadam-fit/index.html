@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a29">
+  <title>Qadam Fit · Демосайт</title>
+  <meta name="description" content="Топтық жаттығулар">
+  <link rel="icon" href="../../../assets/avatar.jpg" type="image/jpeg">
+
+  <link rel="stylesheet" href="../../../assets/demo.css">
+  <script src="../../../assets/site-links.js" defer></script>
+  <script src="../../../assets/demo.js" defer></script>
+</head>
+<body class="fit">
+  <header class="demo-bar">
+    <nav class="shell" aria-label="Демосайт навигациясы">
+      <a href="../../../#work-qadam-fit" data-local-index>Портфолиоға</a>
+      <span>Демосайт</span>
+      <a href="../../../demos/qadam-fit/" data-local-index hreflang="ru" lang="ru">Русский</a>
+    </nav>
+  </header>
+  <main class="shell">
+    <header class="fit-intro">
+      <div>
+        <h1 translate="no">Qadam Fit</h1>
+        <p>Топтық жаттығулар</p>
+      </div>
+      <img src="../../../assets/fitness.jpg" width="1600" height="1067" alt="">
+    </header>
+    <section class="page-section" id="schedule" aria-labelledby="schedule-heading">
+      <div class="schedule-head">
+        <div><h2 id="schedule-heading">Апталық кесте</h2><p>Кесте үлгі ретінде берілген. Уақыт UTC+5 бойынша көрсетілген.</p></div>
+        <label id="schedule-filter" hidden>Апта күні
+          <select id="session-day" aria-controls="sessions">
+            <option value="all">Барлық күн</option>
+          <option value="0">Дүйсенбі</option>
+          <option value="1">Сәрсенбі</option>
+          <option value="2">Жұма</option>
+          <option value="3">Сенбі</option>
+          </select>
+        </label>
+      </div>
+      <p class="schedule-count" id="schedule-count" role="status" hidden data-label="Жаттығулар саны:"></p>
+      <ul id="sessions">
+        <li class="session" data-day="0">
+          <div class="session-clock"><span>Дүйсенбі</span><time>18:30</time></div>
+          <div><h3>Қимыл еркіндігі</h3><p>Буындардың қозғалғыштығы және қимылды бақылау.</p></div>
+          <p class="session-level">35 мин · Кез келген деңгей</p>
+        </li>
+        <li class="session" data-day="1">
+          <div class="session-clock"><span>Сәрсенбі</span><time>19:00</time></div>
+          <div><h3>Функционалды жаттығу</h3><p>Күш пен төзімділікті дамытуға арналған жаттығулар.</p></div>
+          <p class="session-level">45 мин · Орта деңгей</p>
+        </li>
+        <li class="session" data-day="2">
+          <div class="session-clock"><span>Жұма</span><time>18:00</time></div>
+          <div><h3>Арқа саулығы</h3><p>Қимыл еркіндігі мен дене қалпына арналған жеңіл жаттығу.</p></div>
+          <p class="session-level">40 мин · Кез келген деңгей</p>
+        </li>
+        <li class="session" data-day="3">
+          <div class="session-clock"><span>Сенбі</span><time>11:00</time></div>
+          <div><h3>Функционалды жаттығу</h3><p>Күш пен төзімділікті дамытуға арналған жаттығулар.</p></div>
+          <p class="session-level">45 мин · Орта деңгей</p>
+        </li>
+        <li class="session" data-day="3">
+          <div class="session-clock"><span>Сенбі</span><time>12:15</time></div>
+          <div><h3>Қимыл еркіндігі</h3><p>Буындардың қозғалғыштығы және қимылды бақылау.</p></div>
+          <p class="session-level">35 мин · Кез келген деңгей</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="demo-footer shell">
+    <span>Qadam Fit · Иллюстрациялық фотосурет</span>
+    <a href="../../../#work-qadam-fit" data-local-index>Портфолиоға</a>
+  </footer>
+</body>
+</html>
