@@ -1,0 +1,13 @@
+{
+  "name": "akmavren-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test --test-isolation=none tests/qyr-model.test.mjs",
+    "test:browser": "node tests/qyr-browser.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.61.0"
+  }
+}

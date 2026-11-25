@@ -10,12 +10,11 @@
   <link rel="icon" href="../../../../assets/mark.png" type="image/png">
   <link rel="stylesheet" href="../../../../assets/base.css">
   <link rel="stylesheet" href="../../../../assets/barber.css">
-  <link rel="stylesheet" href="../../../../assets/admin.css">
   <script src="../../../../assets/site-links.js" defer></script>
-  <script src="../../../../assets/booking-store.js" defer></script>
-  <script src="../../../../assets/admin.js" defer></script>
+  <link rel="stylesheet" href="../../../../assets/qyr.css">
+  <script type="module" src="../../../../assets/qyr/crm.js"></script>
 </head>
-<body class="qyr admin">
+<body class="qyr q-crm">
   <a class="skip-link" href="#main">Мазмұнға өту</a>
   <header class="demo-bar">
     <nav class="shell" aria-label="Навигация">
@@ -24,34 +23,23 @@
       <div class="languages" role="group" aria-label="Сайт тілі"><a href="../../../../demos/qyr/admin/" lang="ru" hreflang="ru" aria-label="Русский" data-local-index>RU</a><span aria-current="true" lang="kk" title="Қазақша">KK</span></div>
     </nav>
   </header>
-  <main id="main" class="shell" tabindex="-1">
-    <header class="admin-intro">
-      <h1>Демо әкімші панелі</h1>
-      <p>Сынақ жазбалары осы браузерде сақталады. Мұнда нақты клиенттердің деректері жиналмайды.</p>
-    </header>
-    <section class="admin-records" aria-labelledby="records-title">
-      <div class="records-head">
-        <h2 id="records-title">Жазбалар</h2>
-        <div class="admin-filters" id="admin-filters" hidden>
-          <label class="field">Күні бойынша<input type="date" id="date-filter"></label>
-          <label class="field">Күйі
-            <select id="status-filter">
-              <option value="all">Барлық жазба</option>
-              <option value="active">Белсенді</option>
-              <option value="cancelled">Бас тартылған</option>
-            </select>
-          </label>
-        </div>
-      </div>
-      <noscript><p class="admin-empty">Демо панельге JavaScript қажет.</p></noscript>
-      <p id="admin-notice" class="admin-notice" role="status"></p>
-      <p id="admin-error" class="admin-error" role="alert"></p>
-      <div id="records-empty" class="admin-empty" hidden>
-        <p id="empty-copy"></p>
-        <a id="new-booking" class="button" href="../#booking" data-local-index>Сынақ жазбасын жасау <span class="arrow" aria-hidden="true"></span></a>
-      </div>
-      <ul class="records" id="records"></ul>
-    </section>
-  </main>
+  <nav class="shell q-mode" id="qyr-mode" aria-label="Демо режимдері"></nav>
+  <div class="shell q-crm-layout">
+    <aside class="q-rail">
+      <nav id="qyr-crm-nav" aria-label="CRM бөлімдері"></nav>
+      <div id="qyr-global-reset"></div>
+    </aside>
+    <main id="main" tabindex="-1" class="q-crm-main">
+      <header class="q-crm-intro">
+        <h1 id="qyr-crm-heading" tabindex="-1">Басқару панелі</h1>
+        <p>Сынақ деректері осы браузерде сақталады.</p>
+      </header>
+      <p id="qyr-notice" class="q-notice" role="status"></p>
+      <section id="qyr-crm-view" aria-labelledby="qyr-crm-heading">
+        <p class="q-muted">Демоны жүктеп жатырмыз…</p>
+        <noscript><p>Демо панельге JavaScript қажет.</p></noscript>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
