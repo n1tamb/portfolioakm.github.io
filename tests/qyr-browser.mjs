@@ -68,7 +68,7 @@ async function finishBooking(page,{service='cut',staff='alihan',date='2026-11-25
   }
   await dialog.locator('[data-choice="'+staff+'"]').click();
   await button(dialog,'Далее').click();
-  await field(dialog,'date').fill(date);
+  await dialog.locator('[data-date="'+date+'"]').click();
   await button(dialog,'Далее').click();
   const time=dialog.locator('[data-slot]').first();
   const start=Number(await time.getAttribute('data-slot'));
@@ -129,9 +129,26 @@ try {
   await publicPage.locator('[data-service="cut"]').click();
   await wizard(publicPage).locator('[data-choice="alihan"]').click();
   await button(wizard(publicPage),'Далее').click();
-  await field(wizard(publicPage),'date').fill(first.date);
-  await button(wizard(publicPage),'Далее').click();
-  assert(await wizard(publicPage).locator('[data-slot="'+moved+'"]').isVisible());
+  const dateWizard=wizard(publicPage);
+  const reserveDate=dateWizard.locator('[data-date="'+first.date+'"]');
+  await reserveDate.waitFor();
+  assert.equal(await dateWizard.locator('[data-date="2026-11-29"]').count(),0);
+  assert.equal(await dateWizard.locator('input[type=date]').count(),0);
+  const blockId='test-full-day';
+  await crm.evaluate(({key,date,blockId})=>{
+    const data=JSON.parse(localStorage.getItem(key));
+    data.intervals.push({id:blockId,staffId:'alihan',date,through:date,start:0,end:1440,kind:'block'});
+    localStorage.setItem(key,JSON.stringify(data));
+  },{key,date:first.date,blockId});
+  await reserveDate.waitFor({state:'detached'});
+  await crm.evaluate(({key,blockId})=>{
+    const data=JSON.parse(localStorage.getItem(key));
+    data.intervals=data.intervals.filter(interval=>interval.id!==blockId);
+    localStorage.setItem(key,JSON.stringify(data));
+  },{key,blockId});
+  await reserveDate.click();
+  await button(dateWizard,'Далее').click();
+  assert(await dateWizard.locator('[data-slot="'+moved+'"]').isVisible());
 
   // 6–7. Price changes in CRM propagate to the open site; visit totals stay fixed.
   await crmTab(crm,'services');
@@ -237,7 +254,7 @@ try {
   await button(crm,'Создать запись').click();
   await field(panel(crm),'clientId').selectOption('arman');
   await panel(crm).locator('[name=serviceId][value=cut]').check();
-  await field(panel(crm),'date').fill('2026-11-27');
+  await field(panel(crm),'date').selectOption('2026-11-27');
   await firstOption(field(panel(crm),'start'));
   await button(panel(crm),'Создать запись').click();
   await panel(crm).getByRole('heading',{name:'Детали записи'}).waitFor();
@@ -253,6 +270,31 @@ try {
   assert((await state(crm)).intervals.some(item=>item.date==='2026-11-28' && item.kind==='break' && item.start===720));
   await context.close();
 
+  const demoPage=watch(await browser.newPage({viewport:{width:390,height:844},reducedMotion:'no-preference'}));
+  await navigate(demoPage,'');
+  assert.equal(await demoPage.locator('.showcase-montage').evaluate(el=>getComputedStyle(el).animationName),'showcase-cover');
+  await navigate(demoPage,'demos/sary-coffee/');
+  await demoPage.locator('[data-step="1"]').first().click();
+  assert.match(await demoPage.locator('#price-total').innerText(),/1\s200/);
+  await demoPage.locator('[type="reset"]').click();
+  await demoPage.locator('#order-empty').waitFor();
+  await navigate(demoPage,'demos/forma/');
+  await demoPage.locator('.room-photo').first().click();
+  await panel(demoPage).locator('img').evaluate(image=>image.decode());
+  await demoPage.keyboard.press('Escape');
+  assert.equal(await demoPage.locator('.room-photo').first().evaluate(link=>link===document.activeElement),true);
+  const fallback=await demoPage.goto(base+'demos/qadam-fit/?day=tue');
+  assert.equal(fallback.status(),200);
+  await demoPage.locator('#session-day').waitFor();
+  assert.equal(new URL(demoPage.url()).searchParams.has('day'),false);
+  assert.equal(await demoPage.locator('#session-day option').count(),5);
+  await demoPage.locator('#session-day').selectOption('3');
+  assert.equal(await demoPage.locator('.session:visible').count(),2);
+  await demoPage.getByRole('link',{name:'Қазақша'}).click();
+  await demoPage.waitForURL(url=>url.pathname.includes('/kk/') && url.searchParams.get('day')==='3');
+  assert.equal(await demoPage.locator('.session:visible').count(),2);
+  await demoPage.close();
+
   // 19–20. Both locale routes and all target viewports, including visual capture and dark mode.
   for(const width of [360,390,430,768,1024,1440]) {
     const context=await browser.newContext({viewport:{width,height:width<600?844:960},hasTouch:width<600,reducedMotion:'reduce'});
@@ -266,6 +308,8 @@ try {
         await navigate(page,locale+route);
         if(route.includes('admin')) await page.locator('.q-rail [data-q-view]').first().waitFor({state:'attached'});
         if(route==='demos/qyr/') await wizard(page).locator('[data-choice]').first().waitFor();
+        if(route==='') assert.equal(await page.locator('.showcase-montage').evaluate(el=>getComputedStyle(el).animationName),'none');
+        if(locale && route==='demos/qyr/admin/#dashboard') await page.locator('.q-dashboard-strip').getByText(/қараша/).waitFor();
         const status=await page.evaluate(async()=>{
           await document.fonts.ready;
           await Promise.all([...document.images].map(img=>{img.loading='eager';return img.decode().catch(()=>{});}));
@@ -275,12 +319,18 @@ try {
         assert.equal(status.width,width,locale+route);
         assert.equal(status.lang,locale?'kk':'ru');
         assert.deepEqual(status.broken,[],locale+route);
+        if([390,1440].includes(width) && ['', 'demos/qyr/', 'demos/forma/', 'demos/sary-coffee/', 'demos/qadam-fit/', 'demos/qyr/admin/#dashboard'].includes(route)) {
+          const name=route.split('/').filter(Boolean).at(-1)?.replace('#','') || 'portfolio';
+          await page.screenshot({path:resolve(out,'showcase-'+(locale?'kk':'ru')+'-'+width+'-'+name+'.png')});
+        }
         if(!locale && ['demos/qyr/','demos/qyr/admin/#dashboard','demos/qyr/admin/#calendar'].includes(route)) {
           await page.screenshot({path:resolve(out,'qyr-'+width+'-'+(route.endsWith('/')?'visitor':route.split('#')[1])+'.png')});
           if(route==='demos/qyr/' && [390,1440].includes(width)) {
             await page.locator('[data-service="cut"]').click();
             await wizard(page).getByRole('heading',{name:'Выберите мастера'}).waitFor();
-            await page.screenshot({path:resolve(out,'qyr-'+width+'-booking.png')});
+            await button(wizard(page),'Далее').click();
+            await wizard(page).locator('[data-date]').first().waitFor();
+            await page.screenshot({path:resolve(out,'showcase-ru-'+width+'-available-dates.png')});
           }
         }
       }

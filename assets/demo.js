@@ -1,3 +1,5 @@
+const interfaceMotion = matchMedia('(prefers-reduced-motion: no-preference)');
+
 const sampleOrder = document.getElementById('sample-order');
 
 if (sampleOrder) {
@@ -5,7 +7,7 @@ if (sampleOrder) {
   const priceTotal = document.getElementById('price-total');
   const emptyOrder = document.getElementById('order-empty');
   const resetOrder = sampleOrder.querySelector('[type="reset"]');
-  const amount = new Intl.NumberFormat(document.documentElement.lang === 'kk' ? 'kk-KZ' : 'ru-KZ', {
+  const amount = new Intl.NumberFormat('ru-RU', {
     maximumFractionDigits: 0
   });
 
@@ -13,6 +15,7 @@ if (sampleOrder) {
     return Math.min(Number(field.max), Math.max(Number(field.min), Math.trunc(units || 0)));
   }
 
+  let totalMotion;
   function refreshTotal() {
     let total = 0;
     for (const field of quantities) {
@@ -24,7 +27,14 @@ if (sampleOrder) {
     }
     emptyOrder.hidden = total !== 0;
     resetOrder.disabled = total === 0;
-    priceTotal.value = `${amount.format(total)}\u00a0₸`;
+    const value = amount.format(total) + '\u00a0₸';
+    if (priceTotal.value === value) return;
+    priceTotal.value = value;
+    if (interfaceMotion.matches && priceTotal.animate) {
+      totalMotion?.cancel();
+      totalMotion = priceTotal.animate([{transform:'translateY(3px)',opacity:.65},{transform:'none',opacity:1}],
+        {duration:190,easing:'ease-out'});
+    }
   }
 
   sampleOrder.addEventListener('input', refreshTotal);
@@ -64,7 +74,11 @@ if (sessionDay) {
   const emptySchedule = document.getElementById('schedule-empty');
   const languageLink = document.querySelector('[data-schedule-language]');
   const initialDay = new URLSearchParams(location.search).get('day');
-  if ([...sessionDay.options].some(option => option.value === initialDay)) sessionDay.value = initialDay;
+  const activeDays = new Set(sessions.map(session => session.dataset.day));
+  for (const option of [...sessionDay.options]) {
+    if (option.value !== 'all' && !activeDays.has(option.value)) option.remove();
+  }
+  if (activeDays.has(initialDay)) sessionDay.value = initialDay;
 
   function addDay(url) {
     if (sessionDay.value === 'all') url.searchParams.delete('day');
@@ -72,11 +86,18 @@ if (sessionDay) {
     return url;
   }
 
-  function updateSchedule() {
+  function updateSchedule(animate = false) {
     let visible = 0;
     for (const session of sessions) {
       session.hidden = sessionDay.value !== 'all' && session.dataset.day !== sessionDay.value;
-      if (!session.hidden) visible += 1;
+      if (!session.hidden) {
+        if (animate && interfaceMotion.matches && session.animate) {
+          session.getAnimations().forEach(animation => animation.cancel());
+          session.animate([{opacity:.68,transform:'translateY(4px)'},{opacity:1,transform:'none'}],
+            {duration:190,delay:Math.min(visible,4)*24,easing:'ease-out'});
+        }
+        visible += 1;
+      }
     }
     emptySchedule.hidden = visible !== 0;
     count.hidden = sessionDay.value === 'all' || visible === 0;
@@ -89,11 +110,33 @@ if (sessionDay) {
 
   sessionDay.addEventListener('change', () => {
     if (location.protocol !== 'file:') history.replaceState(history.state, '', addDay(new URL(location.href)));
-    updateSchedule();
+    updateSchedule(true);
   });
-  window.addEventListener('pageshow', updateSchedule);
-  window.addEventListener('hashchange', updateSchedule);
+  window.addEventListener('pageshow', () => updateSchedule());
+  window.addEventListener('hashchange', () => updateSchedule());
   document.getElementById('schedule-filter').hidden = false;
+  if (location.protocol !== 'file:' && initialDay !== null && !activeDays.has(initialDay)) {
+    history.replaceState(history.state, '', addDay(new URL(location.href)));
+  }
   updateSchedule();
 }
 
+
+const roomDialog = document.querySelector('.room-dialog');
+if (roomDialog?.showModal) {
+  const title = roomDialog.querySelector('h2');
+  const enlarged = new Image(1120, 840);
+  for (const link of document.querySelectorAll('.room-photo')) {
+    link.setAttribute('aria-haspopup', 'dialog');
+    link.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const thumbnail = link.querySelector('img');
+      title.textContent = thumbnail.alt;
+      enlarged.alt = thumbnail.alt;
+      enlarged.src = link.href;
+      roomDialog.append(enlarged);
+      roomDialog.showModal();
+    });
+  }
+}

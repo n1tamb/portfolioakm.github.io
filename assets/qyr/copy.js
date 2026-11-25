@@ -43,6 +43,11 @@ noMatch|Эту комбинацию не выполняет один масте�
 any|Любой свободный мастер|Кез келген бос шебер
 chooseServices|Выберите услуги|Қызметтерді таңдаңыз
 chooseStaff|Выберите мастера|Шеберді таңдаңыз
+availableDatesOnly|Показаны даты со свободным временем для вашего выбора.|Таңдауыңызға сай бос уақыты бар күндер көрсетілген.
+selectedDate|Выбрано: {0}|Таңдалды: {0}
+freeStarts|Вариантов времени: {0}|Уақыт нұсқалары: {0}
+earlierDates|Более ранние даты|Ертерек күндер
+laterDates|Следующие даты|Келесі күндер
 chooseDate|Выберите дату|Күнді таңдаңыз
 chooseTime|Выберите время|Уақытты таңдаңыз
 chooseProfile|Выберите вымышленный профиль|Ойдан шығарылған профильді таңдаңыз
@@ -299,11 +304,21 @@ settingsMinutes|Значение 0 отключает соответствующ
 export function t(id,...values) {
   return (localized(dictionary[id]) || id).replace(/\{(\d+)\}/g,(_,index)=>values[Number(index)] ?? '');
 }
-const locale=lang==='kk'?'kk-KZ':'ru-KZ';
-const dateFmt=new Intl.DateTimeFormat(locale,{timeZone:'UTC',day:'numeric',month:'long',weekday:'short'});
-const monthFmt=new Intl.DateTimeFormat(locale,{timeZone:'UTC',month:'long',year:'numeric'});
-const moneyFmt=new Intl.NumberFormat(locale);
-export const dateLabel = date => date ? dateFmt.format(new Date(date+'T12:00:00Z')) : '—';
-export const monthLabel = date => monthFmt.format(new Date(date+'T12:00:00Z'));
+const dateFmt=new Intl.DateTimeFormat('ru-RU',{timeZone:'UTC',day:'numeric',month:'long',weekday:'short'});
+const monthFmt=new Intl.DateTimeFormat('ru-RU',{timeZone:'UTC',month:'long',year:'numeric'});
+const kkMonths=['қаңтар','ақпан','наурыз','сәуір','мамыр','маусым','шілде','тамыз','қыркүйек','қазан','қараша','желтоқсан'];
+const kkWeekdays=['жс','дс','сс','ср','бс','жм','сб'];
+const dateInUtc = date => new Date(date+'T12:00:00Z');
+export function dateLabel(date) {
+  if(!date) return '—';
+  const value=dateInUtc(date);
+  return lang==='kk' ? value.getUTCDate()+' '+kkMonths[value.getUTCMonth()]+', '+kkWeekdays[value.getUTCDay()]
+    : dateFmt.format(value);
+}
+export function monthLabel(date) {
+  const value=dateInUtc(date);
+  return lang==='kk' ? kkMonths[value.getUTCMonth()]+' '+value.getUTCFullYear() : monthFmt.format(value);
+}
+const moneyFmt=new Intl.NumberFormat('ru-RU');
 export const money = amount => moneyFmt.format(amount)+' ₸';
 export const weekdays = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];

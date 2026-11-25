@@ -94,14 +94,21 @@ export function slots(data, request, now=Date.now(), options={}) {
   return [...starts.values()].sort((a,b)=>a.start-b.start);
 }
 
-export function nearby(data,request,now=Date.now(),options={}) {
+export function availableDates(data, request, now=Date.now(), options={}) {
+  if(!request.serviceIds?.length) return [];
   const { date } = localClock(now);
   const first = validDate(request.date) && request.date>date ? request.date : date;
-  const candidates = [];
-  for(let next=first; next<=addDays(date,data.settings.horizon) && candidates.length<3; next=addDays(next,1)) {
-    if(slots(data,{...request,date:next},now,options).length) candidates.push(next);
+  const last = addDays(date,data.settings.horizon);
+  const result = [];
+  for(let next=first; next<=last && result.length<(options.limit ?? Infinity); next=addDays(next,1)) {
+    const count=slots(data,{...request,date:next},now,options).length;
+    if(count) result.push({date:next,count});
   }
-  return candidates;
+  return result;
+}
+
+export function nearby(data,request,now=Date.now(),options={}) {
+  return availableDates(data,request,now,{...options,limit:3}).map(entry=>entry.date);
 }
 
 export function addEvent(data,type,booking,now=Date.now(),extra={}) {

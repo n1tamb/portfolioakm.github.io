@@ -1,9 +1,9 @@
 import { t, localized, dateLabel, money, weekdays } from './copy.js';
 import { read, update, subscribe, refreshEvents } from './storage.js';
-import { clients, quote, slots, nearby, holdSlot, clearHold, createBooking, moveBooking, changeStatus,
-  localClock, addDays, formatTime, visitEpoch, protection } from './model.js';
+import { clients, quote, slots, nearby, availableDates, holdSlot, clearHold, createBooking, moveBooking, changeStatus,
+  localClock, formatTime, visitEpoch, protection } from './model.js';
 import { el, replace, btn, primary, group, select, input, label, check, empty, subtitle, badge, photo, asset,
-  dialog, form, submit, confirmDialog, dateInput, dateBounds, bookingSummary, movingFields, calendarFile,
+  dialog, form, submit, confirmDialog, bookingSummary, movingFields, calendarFile,
   announce, showStorageWarning, onAction, run, policy, serviceNames, bookingText } from './ui.js';
 
 const serviceList=document.querySelector('.services');
@@ -12,9 +12,10 @@ const wizard=document.getElementById('qyr-wizard');
 const info=document.getElementById('qyr-info');
 const mode=document.getElementById('qyr-mode');
 const token=crypto.randomUUID();
-const newDraft=()=>({ step:0, serviceIds:[], staffId:'any', date:'', start:null, clientId:'', reserved:null, result:null });
+const newDraft=()=>({ step:0, serviceIds:[], staffId:'any', date:'', datePage:0, start:null, clientId:'', reserved:null, result:null });
 let draft=newDraft();
 let live=read();
+let renderedStep=-1;
 const stepTitles=['chooseServices','chooseStaff','chooseDate','chooseTime','chooseProfile','review'];
 
 const activeStaff=data=>data.staff.filter(person=>person.state==='active');
@@ -130,22 +131,34 @@ function stepStaff() {
       },{'aria-pressed':String(draft.staffId===id),'data-choice':id,class:'q-choice'});
     }));
 }
-function dateButtons(dates,available=false) {
-  return group(dates.map(date=>btn(dateLabel(date),()=>{
-    selectDate(date);
-    if(available) draft.step=3;
-    renderWizard(true);
-  },{'aria-pressed':String(draft.date===date),'data-date':date})));
+const datePageSize=6;
+function dateButtons(dates,skipToTime=false) {
+  return el('div',{class:'q-date-grid'},dates.map(entry=>{
+    const date=typeof entry==='string'?entry:entry.date;
+    return btn([el('strong',null,dateLabel(date)),entry.count?el('small',null,t('freeStarts',entry.count)):null],()=>{
+      selectDate(date);
+      if(skipToTime) draft.step=3;
+      renderWizard(skipToTime);
+      if(!skipToTime) wizard.querySelector('[data-date="'+date+'"]')?.focus({preventScroll:true});
+    },{'aria-pressed':String(draft.date===date),'data-date':date,class:'q-choice'});
+  }));
 }
 function stepDate() {
-  const {date}=localClock();
-  const start=nearby(live,{...request(),date})[0];
-  const options=Array.from({length:5},(_,index)=>addDays(start || date,index)).filter(day=>day<=dateBounds(live).max);
-  const field=dateInput('date',draft.date,{...dateBounds(live),required:true,onchange:event=>{
-    selectDate(event.currentTarget.value);
+  const dates=availableDates(live,{...request(),date:''},Date.now(),{token});
+  if(!dates.length) return empty('noNearby');
+  const pages=Math.ceil(dates.length/datePageSize);
+  draft.datePage=Math.min(draft.datePage,pages-1);
+  const first=draft.datePage*datePageSize;
+  function page(direction) {
+    draft.datePage+=direction;
     renderWizard(true);
-  }});
-  return el('div',{class:'q-stack'},label(t('date'),field),dateButtons(options));
+  }
+  const shown=dates.slice(first,first+datePageSize);
+  return el('div',{class:'q-stack'},subtitle(t('availableDatesOnly')),dateButtons(shown),
+    draft.date && dates.some(item=>item.date===draft.date) && !shown.some(item=>item.date===draft.date)
+      ?subtitle(t('selectedDate',dateLabel(draft.date))):null,
+    pages>1?group(btn(t('earlierDates'),()=>page(-1),{disabled:draft.datePage===0}),
+      btn(t('laterDates'),()=>page(1),{disabled:draft.datePage>=pages-1})):null);
 }
 function stepTime() {
   const times=slots(live,request(),Date.now(),{token});
@@ -182,14 +195,17 @@ function canProceed() {
   const compatible=plans(live,draft.serviceIds).length>0;
   if(draft.step===0) return compatible;
   if(draft.step===1) return compatible && (draft.staffId==='any' || Boolean(quote(live,draft.serviceIds,draft.staffId)));
-  if(draft.step===2) return draft.date>=dateBounds(live).min && draft.date<=dateBounds(live).max;
+  if(draft.step===2) return slots(live,request(),Date.now(),{token}).length>0;
   if(draft.step===3) return draft.start!==null && slots(live,request(),Date.now(),{token}).some(item=>item.start===draft.start);
   if(draft.step===4) return Boolean(draft.clientId);
   return Boolean(draft.reserved);
 }
 async function next(formData) {
   live=read();
-  if(!canProceed()) throw new Error('chooseOption');
+  if(!canProceed()) {
+    if(draft.step===2 || draft.step===3) { renderWizard(true);announce(t('slotLost'),'error');return; }
+    throw new Error('chooseOption');
+  }
   if(draft.step===2 && !slots(live,request(),Date.now(),{token}).some(item=>item.start===draft.start)) draft.start=null;
   if(draft.step===3) {
     draft.reserved=await update(data=>holdSlot(data,token,request()),'wizard');
@@ -209,9 +225,11 @@ async function next(formData) {
   renderWizard(true);
 }
 function renderWizard(focus=false) {
+  const stepChanged=renderedStep!==draft.step;
+  renderedStep=draft.step;
   if(draft.step===6 && draft.result) {
     const current=live.bookings.find(item=>item.id===draft.result.id) || draft.result;
-    const heading=el('h3',{tabindex:-1,'data-wizard-heading':''},t('saved'));
+    const heading=el('h3',{tabindex:-1,'data-wizard-heading':'','data-step-enter':stepChanged},t('saved'));
     replace(wizard,heading,bookingSummary(current),
       current.status==='pending'?subtitle(t('confirmationHint')):null,
       group(primary(t('myBookings'),()=>openBookings(current.clientId)),
@@ -221,6 +239,7 @@ function renderWizard(focus=false) {
   }
   const heading=el('h3',{id:'qyr-step',tabindex:-1,'data-wizard-heading':''},t(stepTitles[draft.step]));
   const body=[stepServices,stepStaff,stepDate,stepTime,stepProfile,stepReview][draft.step]();
+  body.toggleAttribute('data-step-enter',stepChanged);
   const total=draft.reserved ? [draft.reserved] : draft.staffId==='any' ? plans(live,draft.serviceIds) :
     [quote(live,draft.serviceIds,draft.staffId)].filter(Boolean);
   wizard.replaceChildren(
@@ -316,7 +335,7 @@ subscribe((data,source)=>{
   }
   if(source==='wizard') return;
   if(JSON.stringify([prior.site,prior.staff,prior.services])!==JSON.stringify([data.site,data.staff,data.services])) renderPublic();
-  if(source==='clock' && draft.step!==3) return;
+  if(source==='clock' && ![2,3].includes(draft.step)) return;
   if(source==='other' && draft.step===5) return;
   renderWizard();
 });

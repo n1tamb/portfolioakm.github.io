@@ -1,4 +1,4 @@
-import { allowed, clients, formatTime, localClock, addDays, slots, nearby, visitEpoch, zone, finalStatuses } from './model.js';
+import { allowed, clients, formatTime, localClock, slots, availableDates, visitEpoch, zone, finalStatuses } from './model.js';
 import { t, localized, dateLabel, money } from './copy.js';
 import { read, storageWarning, update } from './storage.js';
 
@@ -104,9 +104,12 @@ export function confirmDialog(question, action, text='confirm') {
 }
 
 export function dateInput(name,value,attrs={}) { return input(name,'date',value,attrs); }
-export function dateBounds(data) {
-  const {date}=localClock();
-  return { min:date,max:addDays(date,data.settings.horizon) };
+export function populateAvailableDates(control, data, request, previous, now=Date.now(), options={}) {
+  const dates=availableDates(data,{...request,date:''},now,options);
+  control.replaceChildren(...dates.map(item=>el('option',{value:item.date},dateLabel(item.date))));
+  if(dates.some(item=>item.date===previous)) control.value=previous;
+  control.disabled=dates.length===0;
+  return dates;
 }
 export function bookingSummary(booking) {
   const rows=[
@@ -121,33 +124,31 @@ export function bookingSummary(booking) {
 export function movingFields(data,booking,originalStaff) {
   const staffOptions=data.staff.filter(person=>person.state==='active' &&
     booking.lines.every(line=>person.services.includes(line.id))).map(person=>[person.id,localized(person.name)]);
-  const staff=select('staffId',[['any',t('any')],...staffOptions],originalStaff || 'any');
-  const day=dateInput('date',booking.date<localClock().date?localClock().date:booking.date,{required:true,...dateBounds(data)});
+  const staff=select('staffId',[['any',t('any')],...staffOptions],staffOptions.some(([id])=>id===originalStaff)?originalStaff:'any');
+  const day=select('date',[],'',{required:true});
   const start=select('start',[],'',{required:true});
-  const suggestions=el('div',{class:'q-slot-hint'});
   const status=el('p',{class:'q-muted',role:'status'});
-  function refresh() {
+  const options={snapshot:booking,ignoreId:booking.id};
+  const request=()=>({date:day.value,staffId:staff.value,serviceIds:booking.lines.map(item=>item.id)});
+  function refresh(rebuildDates=false) {
     const value=start.value;
-    const request={date:day.value,staffId:staff.value,serviceIds:booking.lines.map(item=>item.id)};
-    const options={snapshot:booking,ignoreId:booking.id};
     const live=read();
-    const choices=slots(live,request,Date.now(),options);
+    const now=Date.now();
+    if(rebuildDates) populateAvailableDates(day,live,request(),day.value || booking.date,now,options);
+    const choices=slots(live,request(),now,options);
     start.replaceChildren(el('option',{value:''},t('chooseTime')),
       ...choices.map(slot=>el('option',{value:String(slot.start)},formatTime(slot.start)+' · '+staffName(live,slot.staffId))));
     if(choices.some(slot=>String(slot.start)===value)) start.value=value;
     start.disabled=!choices.length;
     const confirm=start.form?.querySelector('[type=submit]');
     if(confirm) confirm.disabled=start.disabled;
-    status.textContent=choices.length?'':t('noSlots');
-    suggestions.replaceChildren();
-    if(!choices.length) suggestions.append(...nearby(live,request,Date.now(),options).map(date=>btn(dateLabel(date),()=>{
-      day.value=date; refresh(); start.focus();
-    })));
+    status.textContent=choices.length?'':t('noNearby');
   }
-  staff.addEventListener('change',refresh);
-  day.addEventListener('change',refresh);
-  refresh();
-  return { nodes:[label(t('master'),staff),label(t('date'),day),label(t('time'),start),status,suggestions],start };
+  staff.addEventListener('change',()=>refresh(true));
+  day.addEventListener('change',()=>refresh());
+  day.addEventListener('focus',()=>refresh(true));
+  refresh(true);
+  return { nodes:[label(t('master'),staff),label(t('date'),day),label(t('time'),start),status],start };
 }
 
 export function download(name,body,type) {

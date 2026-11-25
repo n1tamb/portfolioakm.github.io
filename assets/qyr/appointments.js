@@ -1,9 +1,9 @@
 import { t, localized, dateLabel, monthLabel, weekdays, money } from './copy.js';
 import { read } from './storage.js';
-import { slots, nearby, clients, localClock, weekday, addDays, validDate, formatTime, parseTime,
+import { slots, clients, localClock, weekday, addDays, validDate, formatTime, parseTime,
   createBooking, moveBooking, changeStatus, addEvent, allowed, visitEpoch } from './model.js';
 import { el, btn, primary, group, select, input, label, check, empty, subtitle, badge, dialog, form, submit,
-  confirmDialog, dateInput, dateBounds, bookingSummary, movingFields, run, onAction,
+  confirmDialog, dateInput, populateAvailableDates, bookingSummary, movingFields, run, onAction,
   clientName, staffName, serviceNames, relevantTransitions } from './ui.js';
 
 const ordered=(a,b)=>a.date.localeCompare(b.date)||a.start-b.start;
@@ -96,12 +96,11 @@ export function openManual(defaults={}) {
     const data=read();
     const staffChoices=[['any',t('any')],...data.staff.filter(person=>person.state==='active').map(item=>[item.id,localized(item.name)])];
     const staff=select('staffId',staffChoices,staffChoices.some(([id])=>id===defaults.staffId)?defaults.staffId:'any');
-    const day=dateInput('date',defaults.date>=dateBounds(data).min?defaults.date:dateBounds(data).min,{required:true,...dateBounds(data)});
+    const day=select('date',[],'',{required:true});
     const time=select('start',[],'',{required:true});
     const choices=el('fieldset',null,el('legend',null,t('services')),data.services.filter(item=>item.active)
       .map(item=>check('serviceId',localized(item.name),false,item.id)));
     const status=el('p',{role:'status',class:'q-muted'});
-    const suggestions=el('div',{class:'q-slot-hint'});
     const create=submit('manual',{disabled:true});
     const body=form(async values=>{
       const request={date:values.get('date'),start:Number(values.get('start')),staffId:values.get('staffId'),
@@ -110,29 +109,26 @@ export function openManual(defaults={}) {
       close();
       setTimeout(()=>openVisit(booking.id),0);
     },label(t('profile'),select('clientId',clients.map(item=>[item.id,localized(item.name)]),clients[0].id)),
-    choices,el('div',{class:'q-form-grid'},label(t('master'),staff),label(t('date'),day)),label(t('time'),time),status,suggestions,group(create));
-    function refresh() {
-      const values=new FormData(body);
-      const ids=values.getAll('serviceId');
-      const request={date:day.value,staffId:staff.value,serviceIds:ids};
+    choices,el('div',{class:'q-form-grid'},label(t('master'),staff),label(t('date'),day)),label(t('time'),time),status,group(create));
+    function refresh(rebuildDates=false) {
+      const ids=new FormData(body).getAll('serviceId');
+      const request={staffId:staff.value,serviceIds:ids};
       const live=read();
-      const starts=slots(live,request);
+      const now=Date.now();
+      if(rebuildDates) populateAvailableDates(day,live,request,day.value || defaults.date,now);
+      const starts=slots(live,{...request,date:day.value},now);
       const previous=time.value;
       time.replaceChildren(el('option',{value:''},t('chooseTime')),
         ...starts.map(item=>el('option',{value:String(item.start)},formatTime(item.start)+' · '+staffName(live,item.staffId)+' · '+money(item.total))));
       if(starts.some(item=>String(item.start)===previous)) time.value=previous;
       time.disabled=!starts.length;
       create.disabled=!starts.length;
-      status.textContent=!ids.length?t('chooseServices'):starts.length?'':t('noSlots');
-      suggestions.replaceChildren();
-      if(ids.length && !starts.length) suggestions.append(...nearby(live,request).map(date=>btn(dateLabel(date),()=>{
-        day.value=date;
-        refresh();
-        time.focus();
-      })));
+      status.textContent=!ids.length?t('chooseServices'):starts.length?'':t('noNearby');
     }
-    for(const node of [day,staff,choices]) node.addEventListener('change',refresh);
-    refresh();
+    day.addEventListener('change',()=>refresh());
+    day.addEventListener('focus',()=>refresh(true));
+    for(const node of [staff,choices]) node.addEventListener('change',()=>refresh(true));
+    refresh(true);
     return body;
   });
 }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { seed, localClock, slots, quote, createBooking, moveBooking, changeStatus, setStaffState, collectEvents, finance, holdSlot, clearHold, migrate, visitEpoch } from '../assets/qyr/model.js';
+import { seed, localClock, slots, availableDates, quote, createBooking, moveBooking, changeStatus, setStaffState, collectEvents, finance, holdSlot, clearHold, migrate, visitEpoch } from '../assets/qyr/model.js';
 
 const now = Date.parse('2026-11-24T02:00:00Z');
 const today = '2026-11-24';
@@ -98,4 +98,16 @@ test('a held quote cannot silently change and an overdue confirmation releases i
   assert.equal(entry.status,'cancelled');
   assert(slots(data,request,until).some(item=>item.start===600));
   assert(data.events.some(item=>item.bookingId===entry.id && item.type==='opening'));
+});
+
+test('date listings omit closed days, full days and days without a compatible service', () => {
+  const data=empty();
+  data.settings.horizon=8;
+  data.intervals.push({id:'closure',staffId:'alihan',date:next,through:next,start:0,end:1440,kind:'block'});
+  const dates=availableDates(data,{...request,date:next},now);
+  assert.deepEqual(dates.map(item=>item.date),['2026-11-26','2026-11-27','2026-11-28','2026-12-01','2026-12-02']);
+  for(const item of dates) assert.equal(item.count,slots(data,{...request,date:item.date},now).length);
+  assert.deepEqual(availableDates(data,{...request,serviceIds:['beard']},now),[]);
+  data.intervals.pop();
+  assert.equal(availableDates(data,{...request,date:next},now)[0].date,next);
 });
