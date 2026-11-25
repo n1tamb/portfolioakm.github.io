@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://n1tamb.github.io/portfolioakm.github.io/sitemap.xml

@@ -3,32 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6e8d7">
-  <title>Sary Coffee · Демосайт</title>
-  <meta name="description" content="Фильтр-кофе, эспрессо и выпечка.">
-  <link rel="icon" href="../../assets/avatar.jpg" type="image/jpeg">
+  <meta name="theme-color" content="#f3f1ee">
+  <title>Sary Coffee · Меню и пробный заказ</title>
+  <meta name="description" content="Меню и пробный заказ с суммой в тенге.">
 
+  <link rel="icon" href="../../assets/mark.png" type="image/png">
+  <link rel="canonical" href="https://n1tamb.github.io/portfolioakm.github.io/demos/sary-coffee/">
+  <link rel="alternate" hreflang="ru" href="https://n1tamb.github.io/portfolioakm.github.io/demos/sary-coffee/">
+  <link rel="alternate" hreflang="kk" href="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/sary-coffee/">
+  <link rel="alternate" hreflang="x-default" href="https://n1tamb.github.io/portfolioakm.github.io/demos/sary-coffee/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_KZ">
+  <meta property="og:title" content="Sary Coffee · Меню и пробный заказ">
+  <meta property="og:description" content="Меню и пробный заказ с суммой в тенге.">
+  <meta property="og:url" content="https://n1tamb.github.io/portfolioakm.github.io/demos/sary-coffee/">
+  <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/coffee-1280.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../../assets/base.css">
   <link rel="stylesheet" href="../../assets/demo.css">
   <script src="../../assets/site-links.js" defer></script>
   <script src="../../assets/demo.js" defer></script>
 </head>
 <body class="coffee">
+  <a class="skip-link" href="#main">К содержанию</a>
   <header class="demo-bar">
-    <nav class="shell" aria-label="Навигация демосайта">
-      <a href="../../#work-sary-coffee" data-local-index>К портфолио</a>
-      <span>Демосайт</span>
-      <a href="../../kk/demos/sary-coffee/" data-local-index hreflang="kk" lang="kk">Қазақша</a>
+    <nav class="shell" aria-label="Навигация сайта">
+      <a class="top-link" href="../../#work-sary-coffee" data-local-index><span class="arrow back" aria-hidden="true"></span> Портфолио</a>
+      <span class="brand-word" translate="no">Sary Coffee</span>
+      <div class="languages" role="group" aria-label="Язык сайта"><span aria-current="true" lang="ru" title="Русский">RU</span><a href="../../kk/demos/sary-coffee/" data-local-index data-keep-section lang="kk" hreflang="kk" aria-label="Қазақша">KK</a></div>
     </nav>
   </header>
-  <main class="shell">
-    <section class="coffee-hero">
+  <nav class="section-nav shell" aria-label="Разделы страницы">
+    <a class="text-link" href="#menu">Меню</a>
+    <a class="text-link" href="#sample-order">Пробный заказ</a>
+  </nav>
+  <main class="shell" id="main" tabindex="-1">
+    <section class="coffee-hero hero-enter">
       <div class="coffee-intro">
         <h1 translate="no">Sary Coffee</h1>
         <p>Фильтр-кофе, эспрессо и выпечка.</p>
-        <p class="details"><span>Актобе</span><span>08:00–20:00</span></p>
-        <a class="button" href="#menu">Смотреть меню</a>
+        <p class="visit"><span>Актобе</span><span>08:00–20:00</span></p>
+        <a class="button" href="#menu">Смотреть меню <span class="arrow down" aria-hidden="true"></span></a>
       </div>
-      <img src="../../assets/coffee.jpg" width="1600" height="1057" alt="" fetchpriority="high">
+      <img src="../../assets/coffee-1280.webp"
+         srcset="../../assets/coffee-640.webp 640w, ../../assets/coffee-1280.webp 1280w"
+         sizes="(min-width: 68rem) 61vw, (min-width: 48rem) 55vw, 92vw" width="1280" height="846" alt="" fetchpriority="high">
     </section>
     <section class="page-section" id="menu" aria-labelledby="menu-heading">
       <h2 id="menu-heading">Меню кофейни</h2>
@@ -36,6 +56,7 @@
       <noscript><p class="order-note">Для расчёта заказа нужен JavaScript.</p></noscript>
       <form id="sample-order" autocomplete="off">
         <div class="order-total" hidden>
+          <p id="order-empty">Добавьте напиток или выпечку из меню.</p>
           <span><span id="total-label">Итого</span> <output id="price-total" aria-labelledby="total-label">0 ₸</output></span>
           <button type="reset" aria-label="Очистить заказ">Очистить</button>
         </div>
@@ -44,7 +65,7 @@
           <h3 id="hot-heading">Кофе</h3>
           <ul>
             <li class="menu-item">
-              <div><h4>Капучино</h4><p>Эспрессо и молоко, 250 мл</p></div>
+              <div><h4>Капучино</h4><p>Эспрессо и молоко, 250&nbsp;мл</p></div>
               <div class="menu-selection">
                 <strong>1 200 ₸</strong>
                 <div class="quantity" hidden>
@@ -55,7 +76,7 @@
               </div>
             </li>
             <li class="menu-item">
-              <div><h4>Фильтр-кофе</h4><p>Кофе на зерне дня, 250 мл</p></div>
+              <div><h4>Фильтр-кофе</h4><p>Кофе на зерне дня, 250&nbsp;мл</p></div>
               <div class="menu-selection">
                 <strong>1 100 ₸</strong>
                 <div class="quantity" hidden>
@@ -66,7 +87,7 @@
               </div>
             </li>
             <li class="menu-item">
-              <div><h4>Раф с ванилью</h4><p>Эспрессо, сливки и ваниль, 300 мл</p></div>
+              <div><h4>Раф с ванилью</h4><p>Эспрессо, сливки и ваниль, 300&nbsp;мл</p></div>
               <div class="menu-selection">
                 <strong>1 700 ₸</strong>
                 <div class="quantity" hidden>
@@ -121,8 +142,9 @@
     </section>
   </main>
   <footer class="demo-footer shell">
-    <span>Sary Coffee · Фото для иллюстрации</span>
-    <a href="../../#work-sary-coffee" data-local-index>К портфолио</a>
+    <span>Sary Coffee · Демосайт · Иллюстративные фото</span>
+    <a href="../../#work-sary-coffee" data-local-index>Вернуться в портфолио</a>
   </footer>
 </body>
 </html>
+

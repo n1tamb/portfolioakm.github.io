@@ -3,74 +3,110 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#181317">
-  <meta name="description" content="Демосайты AKMAVREN для бизнеса в Казахстане.">
-  <title>Портфолио · akmavren</title>
-  <link rel="icon" href="assets/avatar.jpg" type="image/jpeg">
+  <meta name="theme-color" content="#f2f4f9">
+  <meta name="description" content="Демосайты для бизнеса в Казахстане. Посмотрите, как клиенты записываются, оформляют заказ и выбирают время.">
+  <title>AKMAVREN · Сайты для бизнеса</title>
+  <link rel="icon" href="assets/mark.png" type="image/png">
+  <link rel="canonical" href="https://n1tamb.github.io/portfolioakm.github.io/">
+  <link rel="alternate" hreflang="ru" href="https://n1tamb.github.io/portfolioakm.github.io/">
+  <link rel="alternate" hreflang="kk" href="https://n1tamb.github.io/portfolioakm.github.io/kk/">
+  <link rel="alternate" hreflang="x-default" href="https://n1tamb.github.io/portfolioakm.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_KZ">
+  <meta property="og:title" content="AKMAVREN · Сайты для бизнеса">
+  <meta property="og:description" content="Демосайты для бизнеса в Казахстане. Посмотрите, как клиенты записываются, оформляют заказ и выбирают время.">
+  <meta property="og:url" content="https://n1tamb.github.io/portfolioakm.github.io/">
+  <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/barber-1280.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/base.css">
   <link rel="stylesheet" href="assets/portfolio.css">
   <script src="assets/site-links.js" defer></script>
 </head>
-<body>
-  <a class="skip-link" href="#work-qyr">К списку работ</a>
-  <header class="masthead wrap">
-    <div class="signature">
-      <img src="assets/avatar.jpg" alt="" width="32" height="32">
-      <span translate="no">akmavren</span>
-    </div>
+<body class="portfolio">
+  <a class="skip-link" href="#projects">К проектам</a>
+  <header class="masthead shell">
+    <a class="signature" href="./" data-local-index aria-label="AKMAVREN">
+      <img src="assets/mark.png" width="30" height="30" alt="">
+      <span translate="no">AKMAVREN</span>
+    </a>
+    <nav class="site-nav" aria-label="Навигация сайта">
+      <a href="#projects">Демопроекты</a>
+      <div class="languages" role="group" aria-label="Язык сайта"><span aria-current="true" lang="ru" title="Русский">RU</span><a href="kk/" data-local-index data-keep-section lang="kk" hreflang="kk" aria-label="Қазақша">KK</a></div>
+    </nav>
   </header>
-
-  <main class="wrap" id="projects">
-    <header class="intro">
-      <h1>Портфолио</h1>
-      <p>Демосайты для бизнеса в Казахстане. Каждый пример открывается на казахском.</p>
-    </header>
-
-    <ul class="projects" aria-label="Демосайты">
+  <main class="shell">
+    <section class="intro hero-enter" aria-labelledby="intro-title">
+      <h1 id="intro-title">Сайты для <span>бизнеса.</span></h1>
+      <div class="intro-copy">
+        <p>Демосайты для бизнеса в Казахстане. Посмотрите, как клиенты записываются, оформляют заказ и выбирают время.</p>
+        <a class="button" href="#projects">Смотреть проекты <span class="arrow down" aria-hidden="true"></span></a>
+      </div>
+    </section>
+    <section id="projects" aria-labelledby="projects-title" tabindex="-1">
+      <header class="work-head">
+        <h2 id="projects-title">Демопроекты</h2>
+      </header>
+      <ul class="projects">
       <li>
-        <a class="project barber" id="work-qyr" href="kk/demos/qyr/" data-local-index hreflang="kk" aria-labelledby="qyr-title" aria-describedby="qyr-description">
-          <img class="project-image" src="assets/preview-qyr.jpg" alt="" width="928" height="548" fetchpriority="high">
+        <a class="project barber" id="work-qyr" href="demos/qyr/" data-local-index aria-labelledby="title-qyr" aria-describedby="desc-qyr">
+          <span class="project-visual"><img src="assets/barber-1280.webp"
+         srcset="assets/barber-640.webp 640w, assets/barber-1280.webp 1280w"
+         sizes="(min-width: 86rem) 740px, (min-width: 46rem) 54vw, 92vw" width="1280" height="853" alt="" fetchpriority="high"></span>
           <div class="project-copy">
             <p class="project-type">Барбершоп</p>
-            <h2 id="qyr-title" translate="no">QYR</h2>
-            <p id="qyr-description">Прайс, выбор мастера и пробная запись.</p>
+            <h3 id="title-qyr" translate="no">QYR</h3>
+            <p class="project-description" id="desc-qyr">Прайс, выбор мастера и пробная запись.</p>
+            <span class="project-arrow"><span class="arrow external" aria-hidden="true"></span></span>
           </div>
-          <span class="project-action">Открыть демо</span>
         </a>
       </li>
       <li>
-        <a class="project coffee" id="work-sary-coffee" href="kk/demos/sary-coffee/" data-local-index hreflang="kk" aria-labelledby="coffee-title" aria-describedby="coffee-description">
-          <img class="project-image" src="assets/preview-sary-coffee.jpg" alt="" width="928" height="548">
+        <a class="project coffee" id="work-sary-coffee" href="demos/sary-coffee/" data-local-index aria-labelledby="title-sary-coffee" aria-describedby="desc-sary-coffee">
+          <span class="project-visual"><img src="assets/coffee-1280.webp"
+         srcset="assets/coffee-640.webp 640w, assets/coffee-1280.webp 1280w"
+         sizes="(min-width: 86rem) 535px, (min-width: 46rem) 38vw, 92vw" width="1280" height="846" alt=""></span>
           <div class="project-copy">
             <p class="project-type">Кофейня</p>
-            <h2 id="coffee-title" translate="no">Sary Coffee</h2>
-            <p id="coffee-description">Меню и пробный заказ с итогом в тенге.</p>
+            <h3 id="title-sary-coffee" translate="no">Sary Coffee</h3>
+            <p class="project-description" id="desc-sary-coffee">Меню и пробный заказ с суммой в тенге.</p>
+            <span class="project-arrow"><span class="arrow external" aria-hidden="true"></span></span>
           </div>
-          <span class="project-action">Открыть демо</span>
         </a>
       </li>
       <li>
-        <a class="project interior" id="work-forma" href="kk/demos/forma/" data-local-index hreflang="kk" aria-labelledby="forma-title" aria-describedby="forma-description">
-          <img class="project-image" src="assets/preview-forma.jpg" alt="" width="928" height="548" loading="lazy">
+        <a class="project interior" id="work-forma" href="demos/forma/" data-local-index aria-labelledby="title-forma" aria-describedby="desc-forma">
+          <span class="project-visual"><img src="assets/interior-1280.webp"
+         srcset="assets/interior-640.webp 640w, assets/interior-1280.webp 1280w"
+         sizes="(min-width: 86rem) 535px, (min-width: 46rem) 38vw, 92vw" width="1280" height="960" alt="" loading="lazy" decoding="async"></span>
           <div class="project-copy">
-            <p class="project-type">Интерьерная студия</p>
-            <h2 id="forma-title" translate="no">Forma</h2>
-            <p id="forma-description">Галерея интерьеров и пакеты услуг.</p>
+            <p class="project-type">Студия интерьеров</p>
+            <h3 id="title-forma" translate="no">Forma</h3>
+            <p class="project-description" id="desc-forma">Галерея интерьеров и форматы работы.</p>
+            <span class="project-arrow"><span class="arrow external" aria-hidden="true"></span></span>
           </div>
-          <span class="project-action">Открыть демо</span>
         </a>
       </li>
       <li>
-        <a class="project fit" id="work-qadam-fit" href="kk/demos/qadam-fit/" data-local-index hreflang="kk" aria-labelledby="qadam-title" aria-describedby="qadam-description">
-          <img class="project-image" src="assets/preview-qadam-fit.jpg" alt="" width="928" height="548" loading="lazy">
+        <a class="project fit" id="work-qadam-fit" href="demos/qadam-fit/" data-local-index aria-labelledby="title-qadam-fit" aria-describedby="desc-qadam-fit">
+          <span class="project-visual"><img src="assets/fitness-1280.webp"
+         srcset="assets/fitness-640.webp 640w, assets/fitness-1280.webp 1280w"
+         sizes="(min-width: 86rem) 740px, (min-width: 46rem) 54vw, 92vw" width="1280" height="854" alt="" loading="lazy" decoding="async"></span>
           <div class="project-copy">
             <p class="project-type">Фитнес-студия</p>
-            <h2 id="qadam-title" translate="no">Qadam Fit</h2>
-            <p id="qadam-description">Расписание тренировок с фильтром по дням.</p>
+            <h3 id="title-qadam-fit" translate="no">Qadam Fit</h3>
+            <p class="project-description" id="desc-qadam-fit">Расписание тренировок с фильтром по дням.</p>
+            <span class="project-arrow"><span class="arrow external" aria-hidden="true"></span></span>
           </div>
-          <span class="project-action">Открыть демо</span>
         </a>
       </li>
-    </ul>
+      </ul>
+    </section>
   </main>
+  <footer class="portfolio-footer">
+    <div class="shell footer-inner">
+      <p>Демонстрационные проекты · Казахстан</p>
+      <a href="https://github.com/n1tamb/portfolioakm.github.io">Код на GitHub <span class="arrow external" aria-hidden="true"></span></a>
+    </div>
+  </footer>
 </body>
 </html>

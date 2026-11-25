@@ -3,32 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6e8d7">
-  <title>Sary Coffee · Демосайт</title>
-  <meta name="description" content="Сүзгіленген кофе, эспрессо және пісірмелер.">
-  <link rel="icon" href="../../../assets/avatar.jpg" type="image/jpeg">
+  <meta name="theme-color" content="#f3f1ee">
+  <title>Sary Coffee · Мәзір және сынақ тапсырыс</title>
+  <meta name="description" content="Мәзір және сомасы теңгемен көрсетілген сынақ тапсырыс.">
 
+  <link rel="icon" href="../../../assets/mark.png" type="image/png">
+  <link rel="canonical" href="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/sary-coffee/">
+  <link rel="alternate" hreflang="ru" href="https://n1tamb.github.io/portfolioakm.github.io/demos/sary-coffee/">
+  <link rel="alternate" hreflang="kk" href="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/sary-coffee/">
+  <link rel="alternate" hreflang="x-default" href="https://n1tamb.github.io/portfolioakm.github.io/demos/sary-coffee/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="kk_KZ">
+  <meta property="og:title" content="Sary Coffee · Мәзір және сынақ тапсырыс">
+  <meta property="og:description" content="Мәзір және сомасы теңгемен көрсетілген сынақ тапсырыс.">
+  <meta property="og:url" content="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/sary-coffee/">
+  <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/coffee-1280.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../../../assets/base.css">
   <link rel="stylesheet" href="../../../assets/demo.css">
   <script src="../../../assets/site-links.js" defer></script>
   <script src="../../../assets/demo.js" defer></script>
 </head>
 <body class="coffee">
+  <a class="skip-link" href="#main">Мазмұнға өту</a>
   <header class="demo-bar">
-    <nav class="shell" aria-label="Демосайт навигациясы">
-      <a href="../../../#work-sary-coffee" data-local-index>Портфолиоға</a>
-      <span>Демосайт</span>
-      <a href="../../../demos/sary-coffee/" data-local-index hreflang="ru" lang="ru">Русский</a>
+    <nav class="shell" aria-label="Сайт навигациясы">
+      <a class="top-link" href="../../../kk/#work-sary-coffee" data-local-index><span class="arrow back" aria-hidden="true"></span> Портфолио</a>
+      <span class="brand-word" translate="no">Sary Coffee</span>
+      <div class="languages" role="group" aria-label="Сайт тілі"><a href="../../../demos/sary-coffee/" data-local-index data-keep-section lang="ru" hreflang="ru" aria-label="Русский">RU</a><span aria-current="true" lang="kk" title="Қазақша">KK</span></div>
     </nav>
   </header>
-  <main class="shell">
-    <section class="coffee-hero">
+  <nav class="section-nav shell" aria-label="Бет бөлімдері">
+    <a class="text-link" href="#menu">Мәзір</a>
+    <a class="text-link" href="#sample-order">Сынақ тапсырыс</a>
+  </nav>
+  <main class="shell" id="main" tabindex="-1">
+    <section class="coffee-hero hero-enter">
       <div class="coffee-intro">
         <h1 translate="no">Sary Coffee</h1>
         <p>Сүзгіленген кофе, эспрессо және пісірмелер.</p>
-        <p class="details"><span>Ақтөбе</span><span>08:00–20:00</span></p>
-        <a class="button" href="#menu">Мәзірді қарау</a>
+        <p class="visit"><span>Ақтөбе</span><span>08:00–20:00</span></p>
+        <a class="button" href="#menu">Мәзірді қарау <span class="arrow down" aria-hidden="true"></span></a>
       </div>
-      <img src="../../../assets/coffee.jpg" width="1600" height="1057" alt="" fetchpriority="high">
+      <img src="../../../assets/coffee-1280.webp"
+         srcset="../../../assets/coffee-640.webp 640w, ../../../assets/coffee-1280.webp 1280w"
+         sizes="(min-width: 68rem) 61vw, (min-width: 48rem) 55vw, 92vw" width="1280" height="846" alt="" fetchpriority="high">
     </section>
     <section class="page-section" id="menu" aria-labelledby="menu-heading">
       <h2 id="menu-heading">Кофехана мәзірі</h2>
@@ -36,6 +56,7 @@
       <noscript><p class="order-note">Тапсырысты есептеу үшін JavaScript қажет.</p></noscript>
       <form id="sample-order" autocomplete="off">
         <div class="order-total" hidden>
+          <p id="order-empty">Мәзірден тағам не сусын таңдаңыз.</p>
           <span><span id="total-label">Барлығы</span> <output id="price-total" aria-labelledby="total-label">0 ₸</output></span>
           <button type="reset" aria-label="Себетті тазалау">Тазалау</button>
         </div>
@@ -44,7 +65,7 @@
           <h3 id="hot-heading">Кофе</h3>
           <ul>
             <li class="menu-item">
-              <div><h4>Капучино</h4><p>Эспрессо мен сүт, 250 мл</p></div>
+              <div><h4>Капучино</h4><p>Эспрессо мен сүт, 250&nbsp;мл</p></div>
               <div class="menu-selection">
                 <strong>1 200 ₸</strong>
                 <div class="quantity" hidden>
@@ -55,7 +76,7 @@
               </div>
             </li>
             <li class="menu-item">
-              <div><h4>Сүзгіленген кофе</h4><p>Сол күнгі кофе дәнінен, 250 мл</p></div>
+              <div><h4>Сүзгіленген кофе</h4><p>Сол күнгі кофе дәнінен, 250&nbsp;мл</p></div>
               <div class="menu-selection">
                 <strong>1 100 ₸</strong>
                 <div class="quantity" hidden>
@@ -66,7 +87,7 @@
               </div>
             </li>
             <li class="menu-item">
-              <div><h4>Ванильді раф</h4><p>Эспрессо, кілегей және ваниль, 300 мл</p></div>
+              <div><h4>Ванильді раф</h4><p>Эспрессо, кілегей және ваниль, 300&nbsp;мл</p></div>
               <div class="menu-selection">
                 <strong>1 700 ₸</strong>
                 <div class="quantity" hidden>
@@ -121,8 +142,9 @@
     </section>
   </main>
   <footer class="demo-footer shell">
-    <span>Sary Coffee · Иллюстрациялық фотосурет</span>
-    <a href="../../../#work-sary-coffee" data-local-index>Портфолиоға</a>
+    <span>Sary Coffee · Демосайт · Көрнекі фотолар</span>
+    <a href="../../../kk/#work-sary-coffee" data-local-index>Портфолиоға оралу</a>
   </footer>
 </body>
 </html>
+

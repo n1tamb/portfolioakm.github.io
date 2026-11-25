@@ -3,39 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="../../../assets/avatar.jpg" type="image/jpeg">
-  <meta name="theme-color" content="#181311">
-  <title>QYR · Барбершоптың демосайты</title>
-  <meta name="description" content="Ерлерге шаш қию — 5 500 ₸, 45 минут.">
+
+  <link rel="icon" href="../../../assets/mark.png" type="image/png">
+  <link rel="canonical" href="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/qyr/">
+  <link rel="alternate" hreflang="ru" href="https://n1tamb.github.io/portfolioakm.github.io/demos/qyr/">
+  <link rel="alternate" hreflang="kk" href="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/qyr/">
+  <link rel="alternate" hreflang="x-default" href="https://n1tamb.github.io/portfolioakm.github.io/demos/qyr/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="kk_KZ">
+  <meta property="og:title" content="QYR · Барбершоп және сынақ жазылу">
+  <meta property="og:description" content="Бағалар, шебер таңдау және сынақ жазылу.">
+  <meta property="og:url" content="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/qyr/">
+  <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/barber-1280.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#221f1b">
+  <title>QYR · Барбершоп және сынақ жазылу</title>
+  <meta name="description" content="Бағалар, шебер таңдау және сынақ жазылу.">
+  <link rel="stylesheet" href="../../../assets/base.css">
   <link rel="stylesheet" href="../../../assets/barber.css">
   <script src="../../../assets/site-links.js" defer></script>
+  <script src="../../../assets/booking-store.js" defer></script>
   <script src="../../../assets/barber.js" defer></script>
 </head>
-<body>
-  <header class="top">
-    <nav class="shell" aria-label="Демосайт навигациясы">
-      <a href="../../../#work-qyr" data-local-index>Портфолиоға</a>
-      <span>Демосайт</span>
-      <a href="../../../demos/qyr/" data-local-index lang="ru" hreflang="ru">Русский</a>
+<body class="qyr">
+  <a class="skip-link" href="#main">Мазмұнға өту</a>
+  <header class="demo-bar">
+    <nav class="shell" aria-label="Сайт навигациясы">
+      <a class="top-link" href="../../../kk/#work-qyr" data-local-index><span class="arrow back" aria-hidden="true"></span> Портфолио</a>
+      <span class="brand-word" translate="no">QYR</span>
+      <div class="languages" role="group" aria-label="Сайт тілі"><a href="../../../demos/qyr/" data-local-index data-keep-section lang="ru" hreflang="ru" aria-label="Русский">RU</a><span aria-current="true" lang="kk" title="Қазақша">KK</span></div>
     </nav>
   </header>
-  <main class="shell">
-    <section class="hero">
+  <nav class="section-nav shell" aria-label="Бет бөлімдері">
+    <a class="text-link" href="#services">Қызметтер</a>
+    <a class="text-link" href="#team">Шеберлер</a>
+    <a class="text-link" href="#booking">Жазылу</a>
+  </nav>
+  <main class="shell" id="main" tabindex="-1">
+    <section class="barber-hero hero-enter">
       <div class="hero-copy">
-        <p class="brand" translate="no">QYR</p>
-        <p class="location">Ақтөбе · 10:00–20:00</p>
-        <h1>Шаш қию, сақал күтімі</h1>
+        <h1>Шаш қию және сақал күтімі</h1>
+        <p class="location">Ақтөбе · 10:00–20:00 (UTC+5)</p>
         <p class="lead">Ерлерге шаш қию — 5 500 ₸, 45 минут.</p>
         <div class="hero-actions">
-          <a class="button" href="#booking">Жазылып көру</a>
-          <a class="map-link" href="https://2gis.kz/aktobe">Ақтөбе 2GIS-те</a>
+          <a class="button" href="#booking">Жазылып көру <span class="arrow" aria-hidden="true"></span></a>
+          <a class="map-link text-link" href="https://2gis.kz/aktobe">Ақтөбе 2GIS-те</a>
         </div>
       </div>
-      <img src="../../../assets/barber.jpg" alt="" width="1500" height="1000" fetchpriority="high">
+      <img src="../../../assets/barber-1280.webp"
+         srcset="../../../assets/barber-640.webp 640w, ../../../assets/barber-1280.webp 1280w"
+         sizes="(min-width: 68rem) 61vw, (min-width: 48rem) 55vw, 92vw" width="1280" height="853" alt="" fetchpriority="high">
     </section>
-    <div class="details">
+    <div class="booking-layout">
       <div>
-        <section aria-labelledby="services">
+        <section class="price-list" aria-labelledby="services">
           <h2 id="services">Қызметтер мен бағалар</h2>
           <ul class="services">
           <li><a href="#booking" data-service="cut"><span><strong>Ерлерге арналған шаш қию</strong><small>45 мин</small></span><span class="price">5 500 ₸</span></a></li>
@@ -53,45 +74,47 @@
         </section>
       </div>
       <section class="booking" id="booking" aria-labelledby="booking-title">
-        <h2 id="booking-title">Сынақ жазылымы</h2>
-        <p class="booking-note" id="booking-note">Бағалар мен уақыт үлгі ретінде берілген. Форма таңдауыңызды көрсетеді, өтінім жіберілмейді.</p>
-        <noscript><p>Сынақ жазылымы үшін JavaScript қажет.</p></noscript>
-        <form id="booking-form" aria-describedby="booking-note">
+        <h2 id="booking-title">Онлайн жазылып көру</h2>
+        <p class="booking-note" id="booking-note">Қызметті, шеберді және уақытты таңдаңыз. Сынақ жазбасы осы браузерде сақталады.</p>
+        <noscript><p>Сынақ жазылу үшін JavaScript қажет.</p></noscript>
+        <form id="booking-form" aria-describedby="booking-note" hidden>
           <label class="field"><span>Қызмет</span>
             <select name="service" required>
-              <option value="cut" data-minutes="45">Ерлерге арналған шаш қию · 5 500 ₸</option>
-              <option value="beard" data-minutes="30">Сақалды реттеу · 3 500 ₸</option>
-              <option value="combo" data-minutes="75">Шаш қию және сақалды реттеу · 8 000 ₸</option>
-              <option value="kids" data-minutes="40">Балаларға арналған шаш қию · 4 500 ₸</option>
+              <option value="cut">Ерлерге арналған шаш қию · 5 500 ₸</option>
+              <option value="beard">Сақалды реттеу · 3 500 ₸</option>
+              <option value="combo">Шаш қию және сақалды реттеу · 8 000 ₸</option>
+              <option value="kids">Балаларға арналған шаш қию · 4 500 ₸</option>
             </select>
           </label>
           <label class="field"><span>Шебер</span>
             <select name="artist">
-              <option>Кез келген шебер</option>
-              <option>Әлихан</option>
-              <option>Данияр</option>
+              <option value="any">Кез келген шебер</option>
+              <option value="alihan">Әлихан</option>
+              <option value="daniyar">Данияр</option>
             </select>
           </label>
           <div class="date-row">
-            <label class="field"><span>Күн</span><input type="date" name="day" required></label>
+            <label class="field"><span>Күн</span><input type="date" name="day" max="9999-12-31" required></label>
             <label class="field"><span>Уақыт (UTC+5)</span>
               <select name="time" aria-describedby="slot-warning" required></select>
             </label>
           </div>
-          <p class="booking-note" id="time-note" role="status" hidden>Сынақ уақытын көру үшін басқа күнді таңдаңыз.</p>
-          <p class="booking-note" id="slot-warning" role="status"></p>
-          <button type="submit" class="button">Таңдауды тексеру</button>
+          <p class="booking-note" id="time-note" role="status" hidden></p>
+          <p class="booking-note" id="slot-warning" role="alert"></p>
+          <button type="submit" class="button">Сынақ жазбасын сақтау <span class="arrow" aria-hidden="true"></span></button>
         </form>
         <div class="receipt" id="receipt" hidden>
+          <h3>Сынақ жазбасы сақталды</h3>
           <output id="booking-summary" form="booking-form" tabindex="-1"></output>
-          <p>Демонстрация аяқталды. Шебердің уақыты брондалған жоқ.</p>
         </div>
+        <p class="admin-link"><a class="text-link" href="admin/" data-local-index>Демо әкімші панелі <span class="arrow external" aria-hidden="true"></span></a></p>
       </section>
     </div>
   </main>
-  <footer class="site-footer shell">
-    <span>QYR · ойдан шығарылған барбершоп</span>
-    <a href="../../../#work-qyr" data-local-index>Портфолиоға</a>
+  <footer class="demo-footer shell">
+    <span>QYR · Ойдан шығарылған барбершоп</span>
+    <a href="../../../kk/#work-qyr" data-local-index>Портфолиоға оралу</a>
   </footer>
 </body>
 </html>
+

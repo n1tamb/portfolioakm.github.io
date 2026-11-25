@@ -1,0 +1,42 @@
+.admin .shell { max-width: 69rem; }
+.admin-intro { padding-block: clamp(2.4rem, 8vw, 6rem) clamp(2rem, 5vw, 3.5rem); }
+.admin-intro h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.35rem, 6vw, 4.8rem);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  text-wrap: initial;
+}
+.admin-intro p { margin-top: .8rem; max-width: 50ch; color: var(--muted); }
+.admin-records { border-top: 1px solid var(--ink); padding: 1.2rem 0 3.5rem; }
+.records-head { display: grid; gap: 1rem; align-items: end; }
+.records-head h2 { font-size: clamp(1.45rem, 3vw, 2.2rem); letter-spacing: -.04em; }
+.admin-filters { display: grid; gap: .75rem; }
+.admin-notice, .admin-error { margin-top: .8rem; }
+.admin-notice:empty, .admin-error:empty { display: none; }
+.admin-error { color: var(--danger); }
+.admin-empty { background: var(--surface); padding: 1.15rem; margin-top: 1.15rem; border: 1px solid var(--rule); }
+.admin-empty .button { margin-top: .8rem; }
+.records { margin-top: 1rem; }
+.record {
+  display: grid;
+  align-items: center;
+  gap: .55rem 1rem;
+  border-top: 1px solid var(--rule);
+  padding: .9rem 0;
+}
+.record:last-child { border-bottom: 1px solid var(--rule); }
+.record h3 { font-size: 1.05rem; }
+.record p { color: var(--muted); margin-top: .23rem; }
+.record .record-status { font-size: .875rem; font-weight: 700; }
+.record .record-action { justify-self: start; min-height: 44px; }
+.record .record-when { font-variant-numeric: tabular-nums; }
+
+@media (min-width: 34rem) {
+  .admin-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 54rem) {
+  .records-head { grid-template-columns: minmax(0, 1fr) minmax(0, 25rem); }
+  .record { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, .8fr) minmax(0, .7fr); }
+  .record .record-action { justify-self: end; }
+}

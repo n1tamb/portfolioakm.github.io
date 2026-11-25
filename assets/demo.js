@@ -3,6 +3,8 @@ const sampleOrder = document.getElementById('sample-order');
 if (sampleOrder) {
   const quantities = [...sampleOrder.querySelectorAll('[data-price]')];
   const priceTotal = document.getElementById('price-total');
+  const emptyOrder = document.getElementById('order-empty');
+  const resetOrder = sampleOrder.querySelector('[type="reset"]');
   const amount = new Intl.NumberFormat(document.documentElement.lang === 'kk' ? 'kk-KZ' : 'ru-KZ', {
     maximumFractionDigits: 0
   });
@@ -20,6 +22,8 @@ if (sampleOrder) {
       selection.querySelector('[data-step="-1"]').setAttribute('aria-disabled', units === Number(field.min));
       selection.querySelector('[data-step="1"]').setAttribute('aria-disabled', units === Number(field.max));
     }
+    emptyOrder.hidden = total !== 0;
+    resetOrder.disabled = total === 0;
     priceTotal.value = `${amount.format(total)}\u00a0₸`;
   }
 
@@ -34,13 +38,17 @@ if (sampleOrder) {
   for (const button of sampleOrder.querySelectorAll('[data-step]')) {
     button.hidden = false;
     button.addEventListener('click', () => {
+      if (button.getAttribute('aria-disabled') === 'true') return;
       const field = button.parentElement.querySelector('input');
       const previous = clampUnits(field, field.valueAsNumber);
       field.value = clampUnits(field, previous + Number(button.dataset.step));
       refreshTotal();
     });
   }
-  sampleOrder.addEventListener('reset', () => requestAnimationFrame(refreshTotal));
+  sampleOrder.addEventListener('reset', () => requestAnimationFrame(() => {
+    refreshTotal();
+    quantities[0]?.parentElement.querySelector('[data-step="1"]').focus();
+  }));
   sampleOrder.addEventListener('submit', event => event.preventDefault());
   window.addEventListener('pageshow', refreshTotal);
   document.getElementById('order-note').hidden = false;
@@ -53,7 +61,8 @@ const sessionDay = document.getElementById('session-day');
 if (sessionDay) {
   const sessions = [...document.querySelectorAll('.session')];
   const count = document.getElementById('schedule-count');
-  const languageLink = document.querySelector('.demo-bar a[hreflang]');
+  const emptySchedule = document.getElementById('schedule-empty');
+  const languageLink = document.querySelector('[data-schedule-language]');
   const initialDay = new URLSearchParams(location.search).get('day');
   if ([...sessionDay.options].some(option => option.value === initialDay)) sessionDay.value = initialDay;
 
@@ -69,11 +78,12 @@ if (sessionDay) {
       session.hidden = sessionDay.value !== 'all' && session.dataset.day !== sessionDay.value;
       if (!session.hidden) visible += 1;
     }
-    count.hidden = sessionDay.value === 'all';
+    emptySchedule.hidden = visible !== 0;
+    count.hidden = sessionDay.value === 'all' || visible === 0;
     count.textContent = count.hidden ? '' : `${count.dataset.label} ${visible}`;
     const alternate = addDay(new URL(languageLink.href));
     if (sessionDay.value !== 'all') alternate.hash = 'schedule';
-    else alternate.hash = '';
+    else alternate.hash = location.hash;
     languageLink.href = alternate;
   }
 
@@ -82,6 +92,8 @@ if (sessionDay) {
     updateSchedule();
   });
   window.addEventListener('pageshow', updateSchedule);
+  window.addEventListener('hashchange', updateSchedule);
   document.getElementById('schedule-filter').hidden = false;
   updateSchedule();
 }
+

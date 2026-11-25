@@ -3,30 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111a29">
-  <title>Qadam Fit · Демосайт</title>
-  <meta name="description" content="Топтық жаттығулар">
-  <link rel="icon" href="../../../assets/avatar.jpg" type="image/jpeg">
+  <meta name="theme-color" content="#f0f3ec">
+  <title>Qadam Fit · Топтық жаттығулар кестесі</title>
+  <meta name="description" content="Жаттығу кестесі және күн бойынша сүзгі.">
 
+  <link rel="icon" href="../../../assets/mark.png" type="image/png">
+  <link rel="canonical" href="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/qadam-fit/">
+  <link rel="alternate" hreflang="ru" href="https://n1tamb.github.io/portfolioakm.github.io/demos/qadam-fit/">
+  <link rel="alternate" hreflang="kk" href="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/qadam-fit/">
+  <link rel="alternate" hreflang="x-default" href="https://n1tamb.github.io/portfolioakm.github.io/demos/qadam-fit/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="kk_KZ">
+  <meta property="og:title" content="Qadam Fit · Топтық жаттығулар кестесі">
+  <meta property="og:description" content="Жаттығу кестесі және күн бойынша сүзгі.">
+  <meta property="og:url" content="https://n1tamb.github.io/portfolioakm.github.io/kk/demos/qadam-fit/">
+  <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/fitness-1280.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../../../assets/base.css">
   <link rel="stylesheet" href="../../../assets/demo.css">
   <script src="../../../assets/site-links.js" defer></script>
   <script src="../../../assets/demo.js" defer></script>
 </head>
 <body class="fit">
+  <a class="skip-link" href="#main">Мазмұнға өту</a>
   <header class="demo-bar">
-    <nav class="shell" aria-label="Демосайт навигациясы">
-      <a href="../../../#work-qadam-fit" data-local-index>Портфолиоға</a>
-      <span>Демосайт</span>
-      <a href="../../../demos/qadam-fit/" data-local-index hreflang="ru" lang="ru">Русский</a>
+    <nav class="shell" aria-label="Сайт навигациясы">
+      <a class="top-link" href="../../../kk/#work-qadam-fit" data-local-index><span class="arrow back" aria-hidden="true"></span> Портфолио</a>
+      <span class="brand-word" translate="no">Qadam Fit</span>
+      <div class="languages" role="group" aria-label="Сайт тілі"><a href="../../../demos/qadam-fit/" data-local-index data-schedule-language lang="ru" hreflang="ru" aria-label="Русский">RU</a><span aria-current="true" lang="kk" title="Қазақша">KK</span></div>
     </nav>
   </header>
-  <main class="shell">
-    <header class="fit-intro">
+  <nav class="section-nav shell" aria-label="Бет бөлімдері">
+    <a class="text-link" href="#schedule">Жаттығу кестесі</a>
+  </nav>
+  <main class="shell" id="main" tabindex="-1">
+    <header class="fit-intro hero-enter">
       <div>
-        <h1 translate="no">Qadam Fit</h1>
-        <p>Топтық жаттығулар</p>
+        <h1>Топтық жаттығулар</h1>
+        <p>Жаттығуды деңгейіңізге және уақытыңызға қарай таңдаңыз.</p>
+        <a class="button" href="#schedule">Кестені көру <span class="arrow down" aria-hidden="true"></span></a>
       </div>
-      <img src="../../../assets/fitness.jpg" width="1600" height="1067" alt="">
+      <img src="../../../assets/fitness-1280.webp"
+         srcset="../../../assets/fitness-640.webp 640w, ../../../assets/fitness-1280.webp 1280w"
+         sizes="(min-width: 68rem) 61vw, (min-width: 48rem) 55vw, 92vw" width="1280" height="854" alt="" fetchpriority="high">
     </header>
     <section class="page-section" id="schedule" aria-labelledby="schedule-heading">
       <div class="schedule-head">
@@ -35,13 +55,17 @@
           <select id="session-day" aria-controls="sessions">
             <option value="all">Барлық күн</option>
           <option value="0">Дүйсенбі</option>
+          <option value="tue">Сейсенбі</option>
           <option value="1">Сәрсенбі</option>
+          <option value="thu">Бейсенбі</option>
           <option value="2">Жұма</option>
           <option value="3">Сенбі</option>
+          <option value="sun">Жексенбі</option>
           </select>
         </label>
       </div>
       <p class="schedule-count" id="schedule-count" role="status" hidden data-label="Жаттығулар саны:"></p>
+      <p class="schedule-empty" id="schedule-empty" hidden>Бұл күні жаттығу жоқ. Басқа күнді таңдаңыз.</p>
       <ul id="sessions">
         <li class="session" data-day="0">
           <div class="session-clock"><span>Дүйсенбі</span><time>18:30</time></div>
@@ -72,8 +96,9 @@
     </section>
   </main>
   <footer class="demo-footer shell">
-    <span>Qadam Fit · Иллюстрациялық фотосурет</span>
-    <a href="../../../#work-qadam-fit" data-local-index>Портфолиоға</a>
+    <span>Qadam Fit · Демосайт · Көрнекі фотолар</span>
+    <a href="../../../kk/#work-qadam-fit" data-local-index>Портфолиоға оралу</a>
   </footer>
 </body>
 </html>
+
