@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f2f4f9">
+  <meta name="theme-color" content="#f6f3eb">
   <meta name="description" content="Қазақстандағы бизнеске арналған демосайттар. Клиент қызметке қалай жазылатынын, тапсырыс беретінін немесе кестені қарайтынын көріңіз.">
   <title>AKMAVREN · Бизнеске арналған сайттар</title>
   <link rel="icon" href="../assets/mark.png" type="image/png">
@@ -19,103 +19,81 @@
   <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/barber-1280.webp">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="../assets/base.css">
-  <link rel="stylesheet" href="../assets/portfolio.css">
-  <link rel="stylesheet" href="../assets/showcase.css">
+  <link rel="stylesheet" href="../assets/studio.css">
+  <script src="../assets/studio.js" defer></script>
   <script src="../assets/site-links.js" defer></script>
 </head>
 <body class="portfolio">
   <a class="skip-link" href="#projects">Жобаларға өту</a>
-  <header class="masthead shell">
-    <a class="signature" href="./" data-local-index aria-label="AKMAVREN">
-      <img src="../assets/mark.png" width="30" height="30" alt="">
-      <span translate="no">AKMAVREN</span>
-    </a>
-    <nav class="site-nav" aria-label="Сайт навигациясы">
-      <a href="#projects">Деможобалар</a>
-      <div class="languages" role="group" aria-label="Сайт тілі"><a href="../" data-local-index data-keep-section lang="ru" hreflang="ru" aria-label="Русский">RU</a><span aria-current="true" lang="kk" title="Қазақша">KK</span></div>
-    </nav>
+  <header class="shell studio-header">
+    <a class="wordmark" href="./" data-local-index aria-label="AKMAVREN"><i class="studio-mark" aria-hidden="true"></i>AKMAVREN</a>
+    <nav aria-label="Навигация"><a href="#projects">Барлық жоба</a><div class="languages" role="group" aria-label="Сайт тілі"><a href="../" data-local-index data-keep-section lang="ru" hreflang="ru" aria-label="Русский">RU</a><span aria-current="true" lang="kk" title="Қазақша">KK</span></div></nav>
   </header>
   <main class="shell">
-    <section class="intro showcase-hero hero-enter" aria-labelledby="intro-title">
-      <div class="showcase-lead">
-        <h1 id="intro-title">Бизнеске арналған <span>сайттар.</span></h1>
-        <div class="intro-copy">
-          <p>Қазақстандағы бизнеске арналған демосайттар. Клиент қызметке қалай жазылатынын, тапсырыс беретінін немесе кестені қарайтынын көріңіз.</p>
-          <a class="button" href="#projects">Жобалар <span class="arrow down" aria-hidden="true"></span></a>
+    <section class="studio-hero" aria-labelledby="intro-title">
+      <div class="studio-intro">
+        <p class="studio-tag">Интерактивті портфолио</p>
+        <h1 id="intro-title"><span>Бизнеске</span> <em>сайттар.</em></h1>
+        <p class="studio-lead">Қазақстандағы бизнеске арналған төрт сайт. Кофеге тапсырыс беріп, жаттығу таңдаңыз немесе шеберге жазылып көріңіз.</p>
+        <a class="index-link" href="#projects">Барлық деможоба<span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="project-player" aria-label="Жобаларды алдын ала қарау" role="region">
+        <div class="poster-stack">
+          <a class="poster poster-coffee" href="demos/sary-coffee/" data-local-index  aria-label="Sary Coffee · Кофехананы ашу">
+            <img src="../assets/coffee-1280.webp" width="640" height="427" alt="" fetchpriority="high" >
+            <span class="poster-label">Кофехана</span><strong class="poster-name" translate="no"><b>Sary</b> <b>Coffee</b></strong>
+            <span class="poster-action">Кофехананы ашу <i aria-hidden="true"></i></span>
+          </a>
+          <a class="poster poster-interior" href="demos/forma/" data-local-index hidden aria-label="Forma · Студияны ашу">
+            <img src="../assets/interior-640.webp" width="640" height="427" alt="" loading="lazy" >
+            <span class="poster-label">Интерьер студиясы</span><strong class="poster-name" translate="no"><b>Forma</b></strong>
+            <span class="poster-action">Студияны ашу <i aria-hidden="true"></i></span>
+          </a>
+          <a class="poster poster-fit" href="demos/qadam-fit/" data-local-index hidden aria-label="Qadam Fit · Фитнес студиясын ашу">
+            <img src="../assets/fitness-640.webp" width="640" height="427" alt="" loading="lazy" >
+            <span class="poster-label">Фитнес студиясы</span><strong class="poster-name" translate="no"><b>Qadam</b> <b>Fit</b></strong>
+            <span class="poster-action">Фитнес студиясын ашу <i aria-hidden="true"></i></span>
+          </a>
+          <a class="poster poster-barber" href="demos/qyr/" data-local-index hidden aria-label="QYR · Барбершопты ашу">
+            <img src="../assets/barber-640.webp" width="640" height="427" alt="" loading="lazy" >
+            <span class="poster-label">Барбершоп</span><strong class="poster-name" translate="no"><b>QYR</b></strong>
+            <span class="poster-action">Барбершопты ашу <i aria-hidden="true"></i></span>
+          </a>
+        </div>
+        <div class="player-controls" hidden role="group" aria-label="Жобаны таңдау">
+          <button type="button" aria-pressed="true" data-slide="0" translate="no">Sary Coffee</button>
+          <button type="button" aria-pressed="false" data-slide="1" translate="no">Forma</button>
+          <button type="button" aria-pressed="false" data-slide="2" translate="no">Qadam Fit</button>
+          <button type="button" aria-pressed="false" data-slide="3" translate="no">QYR</button>
         </div>
       </div>
-      <div class="showcase-montage" aria-hidden="true">
-        <img src="../assets/barber-640.webp" width="640" height="427" alt="">
-        <img src="../assets/coffee-640.webp" width="640" height="423" alt="">
-        <img src="../assets/interior-640.webp" width="640" height="480" alt="">
-        <img src="../assets/fitness-640.webp" width="640" height="427" alt="">
-      </div>
     </section>
-    <section id="projects" aria-labelledby="projects-title" tabindex="-1">
-      <header class="work-head">
-        <h2 id="projects-title">Деможобалар</h2>
-      </header>
-      <ul class="projects">
-      <li>
-        <a class="project barber" id="work-qyr" href="demos/qyr/" data-local-index aria-labelledby="title-qyr" aria-describedby="desc-qyr">
-          <span class="project-visual"><img src="../assets/barber-1280.webp"
-         srcset="../assets/barber-640.webp 640w, ../assets/barber-1280.webp 1280w"
-         sizes="(min-width: 86rem) 740px, (min-width: 46rem) 54vw, 92vw" width="1280" height="853" alt="" fetchpriority="high"></span>
-          <div class="project-copy">
-            <p class="project-type">Барбершоп</p>
-            <h3 id="title-qyr" translate="no">QYR</h3>
-            <p class="project-description" id="desc-qyr">Бағалар, шебер таңдау және сынақ жазылу.</p>
-            <span class="project-arrow"><span class="arrow external" aria-hidden="true"></span></span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="project coffee" id="work-sary-coffee" href="demos/sary-coffee/" data-local-index aria-labelledby="title-sary-coffee" aria-describedby="desc-sary-coffee">
-          <span class="project-visual"><img src="../assets/coffee-1280.webp"
-         srcset="../assets/coffee-640.webp 640w, ../assets/coffee-1280.webp 1280w"
-         sizes="(min-width: 86rem) 535px, (min-width: 46rem) 38vw, 92vw" width="1280" height="846" alt=""></span>
-          <div class="project-copy">
-            <p class="project-type">Кофехана</p>
-            <h3 id="title-sary-coffee" translate="no">Sary Coffee</h3>
-            <p class="project-description" id="desc-sary-coffee">Мәзір және сомасы теңгемен көрсетілген сынақ тапсырыс.</p>
-            <span class="project-arrow"><span class="arrow external" aria-hidden="true"></span></span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="project interior" id="work-forma" href="demos/forma/" data-local-index aria-labelledby="title-forma" aria-describedby="desc-forma">
-          <span class="project-visual"><img src="../assets/interior-1280.webp"
-         srcset="../assets/interior-640.webp 640w, ../assets/interior-1280.webp 1280w"
-         sizes="(min-width: 86rem) 535px, (min-width: 46rem) 38vw, 92vw" width="1280" height="960" alt="" loading="lazy" decoding="async"></span>
-          <div class="project-copy">
-            <p class="project-type">Интерьер студиясы</p>
-            <h3 id="title-forma" translate="no">Forma</h3>
-            <p class="project-description" id="desc-forma">Интерьер галереясы және жұмыс түрлері.</p>
-            <span class="project-arrow"><span class="arrow external" aria-hidden="true"></span></span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="project fit" id="work-qadam-fit" href="demos/qadam-fit/" data-local-index aria-labelledby="title-qadam-fit" aria-describedby="desc-qadam-fit">
-          <span class="project-visual"><img src="../assets/fitness-1280.webp"
-         srcset="../assets/fitness-640.webp 640w, ../assets/fitness-1280.webp 1280w"
-         sizes="(min-width: 86rem) 740px, (min-width: 46rem) 54vw, 92vw" width="1280" height="854" alt="" loading="lazy" decoding="async"></span>
-          <div class="project-copy">
-            <p class="project-type">Фитнес студиясы</p>
-            <h3 id="title-qadam-fit" translate="no">Qadam Fit</h3>
-            <p class="project-description" id="desc-qadam-fit">Жаттығу кестесі және күн бойынша сүзгі.</p>
-            <span class="project-arrow"><span class="arrow external" aria-hidden="true"></span></span>
-          </div>
-        </a>
-      </li>
+    <section id="projects" tabindex="-1" aria-labelledby="projects-title">
+      <header class="index-head"><h2 id="projects-title">Жобалар каталогы</h2></header>
+      <ul class="project-index">
+        <li><a class="index-project" id="work-sary-coffee" href="demos/sary-coffee/" data-local-index>
+          <img src="../assets/coffee-640.webp" width="120" height="72" loading="lazy" alt="">
+          <span><small>Кофехана</small><strong translate="no">Sary Coffee</strong></span>
+          <span class="index-purpose">Мәзір мен тапсырыс</span><span class="index-open">Ашу</span>
+        </a></li>
+        <li><a class="index-project" id="work-forma" href="demos/forma/" data-local-index>
+          <img src="../assets/interior-640.webp" width="120" height="72" loading="lazy" alt="">
+          <span><small>Интерьер студиясы</small><strong translate="no">Forma</strong></span>
+          <span class="index-purpose">Интерьер галереясы</span><span class="index-open">Ашу</span>
+        </a></li>
+        <li><a class="index-project" id="work-qadam-fit" href="demos/qadam-fit/" data-local-index>
+          <img src="../assets/fitness-640.webp" width="120" height="72" loading="lazy" alt="">
+          <span><small>Фитнес студиясы</small><strong translate="no">Qadam Fit</strong></span>
+          <span class="index-purpose">Жаттығу кестесі</span><span class="index-open">Ашу</span>
+        </a></li>
+        <li><a class="index-project" id="work-qyr" href="demos/qyr/" data-local-index>
+          <img src="../assets/barber-640.webp" width="120" height="72" loading="lazy" alt="">
+          <span><small>Барбершоп</small><strong translate="no">QYR</strong></span>
+          <span class="index-purpose">Онлайн жазылу және CRM</span><span class="index-open">Ашу</span>
+        </a></li>
       </ul>
     </section>
   </main>
-  <footer class="portfolio-footer">
-    <div class="shell footer-inner">
-      <p>Деможобалар · Қазақстан</p>
-      <a href="https://github.com/n1tamb/portfolioakm.github.io">GitHub-тағы код <span class="arrow external" aria-hidden="true"></span></a>
-    </div>
-  </footer>
+  <footer class="shell studio-footer"><span>AKMAVREN · Қазақстан</span><a href="https://github.com/n1tamb/portfolioakm.github.io">GitHub-тағы код</a></footer>
 </body>
 </html>

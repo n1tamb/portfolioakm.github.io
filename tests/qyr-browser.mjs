@@ -272,7 +272,15 @@ try {
 
   const demoPage=watch(await browser.newPage({viewport:{width:390,height:844},reducedMotion:'no-preference'}));
   await navigate(demoPage,'');
-  assert.equal(await demoPage.locator('.showcase-montage').evaluate(el=>getComputedStyle(el).animationName),'showcase-cover');
+  assert.equal(await demoPage.locator('.poster:visible img').evaluate(el=>getComputedStyle(el).animationName),'poster-image');
+  const picker = demoPage.locator('.player-controls');
+  for (const [index, path] of ['sary-coffee','forma','qadam-fit','qyr'].entries()) {
+    await picker.locator('button').nth(index).click();
+    assert.equal(await demoPage.locator('.poster:visible').getAttribute('href'), 'demos/'+path+'/');
+    assert.equal(await picker.locator('[aria-pressed=true]').count(), 1);
+  }
+  await demoPage.keyboard.press('ArrowRight');
+  assert.equal(await picker.locator('button').first().getAttribute('aria-pressed'), 'true');
   await navigate(demoPage,'demos/sary-coffee/');
   await demoPage.locator('[data-step="1"]').first().click();
   assert.match(await demoPage.locator('#price-total').innerText(),/1\s200/);
@@ -308,7 +316,7 @@ try {
         await navigate(page,locale+route);
         if(route.includes('admin')) await page.locator('.q-rail [data-q-view]').first().waitFor({state:'attached'});
         if(route==='demos/qyr/') await wizard(page).locator('[data-choice]').first().waitFor();
-        if(route==='') assert.equal(await page.locator('.showcase-montage').evaluate(el=>getComputedStyle(el).animationName),'none');
+        if(route==='') assert.equal(await page.locator('.poster:visible img').evaluate(el=>getComputedStyle(el).animationName),'none');
         if(locale && route==='demos/qyr/admin/#dashboard') await page.locator('.q-dashboard-strip').getByText(/қараша/).waitFor();
         const status=await page.evaluate(async()=>{
           await document.fonts.ready;
