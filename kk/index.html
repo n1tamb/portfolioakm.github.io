@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f2f4f9">
+  <meta name="theme-color" content="#f3f5fc">
   <meta name="description" content="Қазақстандағы бизнеске арналған демосайттар. Клиент қызметке қалай жазылатынын, тапсырыс беретінін немесе кестені қарайтынын көріңіз.">
   <title>AKMAVREN · Бизнеске арналған сайттар</title>
   <link rel="icon" href="../assets/mark.png" type="image/png">
@@ -20,11 +20,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="../assets/base.css">
   <link rel="stylesheet" href="../assets/portfolio.css">
+  <link rel="stylesheet" href="../assets/modern.css">
   <script src="../assets/site-links.js" defer></script>
+  <script src="../assets/motion.js" defer></script>
 </head>
 <body class="portfolio">
   <a class="skip-link" href="#projects">Жобаларға өту</a>
-  <header class="masthead shell">
+  <div class="masthead-wrap"><header class="masthead shell">
     <a class="signature" href="./" data-local-index aria-label="AKMAVREN">
       <img src="../assets/mark.png" width="30" height="30" alt="">
       <span translate="no">AKMAVREN</span>
@@ -33,21 +35,42 @@
       <a href="#projects">Деможобалар</a>
       <div class="languages" role="group" aria-label="Сайт тілі"><a href="../" data-local-index data-keep-section lang="ru" hreflang="ru" aria-label="Русский">RU</a><span aria-current="true" lang="kk" title="Қазақша">KK</span></div>
     </nav>
-  </header>
-  <main class="shell">
-    <section class="intro hero-enter" aria-labelledby="intro-title">
+  </header></div>
+  <main>
+    <div class="hero">
+    <section class="intro" aria-labelledby="intro-title">
+      <div>
       <h1 id="intro-title">Бизнеске арналған <span>сайттар.</span></h1>
       <div class="intro-copy">
         <p>Қазақстандағы бизнеске арналған демосайттар. Клиент қызметке қалай жазылатынын, тапсырыс беретінін немесе кестені қарайтынын көріңіз.</p>
         <a class="button" href="#projects">Жобалар <span class="arrow down" aria-hidden="true"></span></a>
       </div>
+      </div>
+      <div class="showcase">
+        <div class="phone" role="img" aria-label="Анимацияланған мысал: жазылу, тапсырыс және кесте">
+          <div class="screen on" aria-hidden="true"><b class="title">QYR</b>
+            <div class="row"><span><strong>Ерлерге арналған шаш қию</strong><small>45 мин</small></span><strong>5&nbsp;500&nbsp;₸</strong></div>
+            <div class="row"><span>Шебер: Әлихан</span></div><small>Уақытты таңдаңыз</small>
+            <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot" data-step-at="1100">14:00</span><span class="slot">15:30</span><span class="slot">17:00</span><span class="slot">18:30</span></div>
+            <div class="done" data-step-at="2400">Жазылу сақталды ✓</div></div>
+          <div class="screen" aria-hidden="true"><b class="title">Sary Coffee</b><small>Сіздің тапсырысыңыз</small>
+            <div class="row" data-step-at="500"><span><strong>Капучино</strong><small>250 мл</small></span><strong>1&nbsp;200&nbsp;₸</strong></div><div class="row" data-step-at="1300"><span><strong>Бадамды круассан</strong><small>1 ×</small></span><strong>1&nbsp;550&nbsp;₸</strong></div><div class="row" data-step-at="2100"><span><strong>Шоколадты печенье</strong><small>1 ×</small></span><strong>850&nbsp;₸</strong></div>
+            <div class="done" data-step-at="2700">Барлығы: 3 600 ₸</div></div>
+          <div class="screen" aria-hidden="true"><b class="title">Qadam Fit</b><small>Кесте</small>
+            <div class="slots"><span class="slot">Дс</span><span class="slot">Ср</span><span class="slot" data-step-at="800">Сб</span></div>
+            <div class="row" data-step-at="1500"><span><strong>Функционалды жаттығу</strong><small>Орта деңгей</small></span><strong>11:00</strong></div><div class="row" data-step-at="1800"><span><strong>Қимыл еркіндігі</strong><small>Кез келген деңгей</small></span><strong>12:15</strong></div>
+            <div class="done" data-step-at="2600">Сенбі: 2 жаттығу</div></div>
+        </div>
+        <div class="showcase-tabs" role="group" aria-label="Демоны таңдау" hidden><button type="button" aria-pressed="true">Жазылу</button><button type="button" aria-pressed="false">Тапсырыс</button><button type="button" aria-pressed="false">Кесте</button></div>
+      </div>
     </section>
-    <section id="projects" aria-labelledby="projects-title" tabindex="-1">
+    </div>
+    <section class="shell" id="projects" aria-labelledby="projects-title" tabindex="-1">
       <header class="work-head">
         <h2 id="projects-title">Деможобалар</h2>
       </header>
       <ul class="projects">
-      <li>
+      <li style="--i:0">
         <a class="project barber" id="work-qyr" href="demos/qyr/" data-local-index aria-labelledby="title-qyr" aria-describedby="desc-qyr">
           <span class="project-visual"><img src="../assets/barber-1280.webp"
          srcset="../assets/barber-640.webp 640w, ../assets/barber-1280.webp 1280w"
@@ -60,7 +83,7 @@
           </div>
         </a>
       </li>
-      <li>
+      <li style="--i:1">
         <a class="project coffee" id="work-sary-coffee" href="demos/sary-coffee/" data-local-index aria-labelledby="title-sary-coffee" aria-describedby="desc-sary-coffee">
           <span class="project-visual"><img src="../assets/coffee-1280.webp"
          srcset="../assets/coffee-640.webp 640w, ../assets/coffee-1280.webp 1280w"
@@ -73,7 +96,7 @@
           </div>
         </a>
       </li>
-      <li>
+      <li style="--i:2">
         <a class="project interior" id="work-forma" href="demos/forma/" data-local-index aria-labelledby="title-forma" aria-describedby="desc-forma">
           <span class="project-visual"><img src="../assets/interior-1280.webp"
          srcset="../assets/interior-640.webp 640w, ../assets/interior-1280.webp 1280w"
@@ -86,7 +109,7 @@
           </div>
         </a>
       </li>
-      <li>
+      <li style="--i:3">
         <a class="project fit" id="work-qadam-fit" href="demos/qadam-fit/" data-local-index aria-labelledby="title-qadam-fit" aria-describedby="desc-qadam-fit">
           <span class="project-visual"><img src="../assets/fitness-1280.webp"
          srcset="../assets/fitness-640.webp 640w, ../assets/fitness-1280.webp 1280w"
