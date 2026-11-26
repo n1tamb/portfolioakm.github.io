@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f0f3ec">
+  <meta name="theme-color" content="#f9f9f8">
   <title>Qadam Fit · Топтық жаттығулар кестесі</title>
   <meta name="description" content="Жаттығу кестесі және күн бойынша сүзгі.">
 
@@ -20,8 +20,10 @@
   <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/fitness-1280.webp">
   <meta name="twitter:card" content="summary_large_image">
 
+  <link rel="stylesheet" href="../../../assets/vendor/design-tokens.css">
   <link rel="stylesheet" href="../../../assets/base.css">
   <link rel="stylesheet" href="../../../assets/demo.css">
+  <link rel="stylesheet" href="../../../assets/showcase.css">
   <script src="../../../assets/site-links.js" defer></script>
   <script src="../../../assets/demo.js" defer></script>
 </head>
@@ -53,14 +55,11 @@
         <div><h2 id="schedule-heading">Апталық кесте</h2><p>Кесте үлгі ретінде берілген. Уақыт UTC+5 бойынша көрсетілген.</p></div>
         <label id="schedule-filter" hidden>Апта күні
           <select id="session-day" aria-controls="sessions">
-            <option value="all">Барлық күн</option>
-          <option value="0">Дүйсенбі</option>
-          <option value="tue">Сейсенбі</option>
-          <option value="1">Сәрсенбі</option>
-          <option value="thu">Бейсенбі</option>
-          <option value="2">Жұма</option>
-          <option value="3">Сенбі</option>
-          <option value="sun">Жексенбі</option>
+              <option value="all">Барлық күн</option>
+            <option value="0">Дүйсенбі</option>
+            <option value="1">Сәрсенбі</option>
+            <option value="2">Жұма</option>
+            <option value="3">Сенбі</option>
           </select>
         </label>
       </div>

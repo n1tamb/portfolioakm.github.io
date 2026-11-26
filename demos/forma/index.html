@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#edf0ea">
+  <meta name="theme-color" content="#fcfdfc">
   <title>Forma · Дизайн интерьеров</title>
   <meta name="description" content="Галерея интерьеров и форматы работы.">
 
@@ -20,9 +20,12 @@
   <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/interior-1280.webp">
   <meta name="twitter:card" content="summary_large_image">
 
+  <link rel="stylesheet" href="../../assets/vendor/design-tokens.css">
   <link rel="stylesheet" href="../../assets/base.css">
   <link rel="stylesheet" href="../../assets/demo.css">
+  <link rel="stylesheet" href="../../assets/showcase.css">
   <script src="../../assets/site-links.js" defer></script>
+  <script src="../../assets/demo.js" defer></script>
 </head>
 <body class="interior">
   <a class="skip-link" href="#main">К содержанию</a>
@@ -55,15 +58,21 @@
       <h2 id="gallery-heading">Кухня и спальня</h2>
       <div class="room-grid">
         <figure>
-          <img src="../../assets/forma-kitchen-1280.webp"
+          <a class="room-photo" href="../../assets/forma-kitchen-1280.webp">
+            <img src="../../assets/forma-kitchen-1280.webp"
          srcset="../../assets/forma-kitchen-640.webp 640w, ../../assets/forma-kitchen-1280.webp 1120w"
          sizes="(min-width: 68rem) 40vw, (min-width: 48rem) 48vw, 92vw" width="1120" height="840" alt="Кухня" loading="lazy" decoding="async">
+            <span class="room-expand" aria-hidden="true"><span class="arrow external"></span></span>
+          </a>
           <figcaption><h3>Кухня</h3><p>Остров объединяет рабочую зону и место для завтрака.</p></figcaption>
         </figure>
         <figure>
-          <img src="../../assets/forma-bedroom-1280.webp"
+          <a class="room-photo" href="../../assets/forma-bedroom-1280.webp">
+            <img src="../../assets/forma-bedroom-1280.webp"
          srcset="../../assets/forma-bedroom-640.webp 640w, ../../assets/forma-bedroom-1280.webp 1120w"
          sizes="(min-width: 68rem) 40vw, (min-width: 48rem) 48vw, 92vw" width="1120" height="840" alt="Спальня" loading="lazy" decoding="async">
+            <span class="room-expand" aria-hidden="true"><span class="arrow external"></span></span>
+          </a>
           <figcaption><h3>Спальня</h3><p>Спокойная палитра, тёплый текстиль и зелень.</p></figcaption>
         </figure>
       </div>
@@ -81,6 +90,12 @@
     <span>Forma · Демосайт · Иллюстративные фото</span>
     <a href="../../#work-forma" data-local-index>Вернуться в портфолио</a>
   </footer>
+  <dialog class="room-dialog" aria-labelledby="room-dialog-title">
+    <div class="room-dialog-head">
+      <h2 id="room-dialog-title"></h2>
+      <form method="dialog"><button class="button secondary">Закрыть</button></form>
+    </div>
+  </dialog>
 </body>
 </html>
 

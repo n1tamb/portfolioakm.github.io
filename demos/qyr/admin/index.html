@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#efeeec">
+  <meta name="theme-color" content="#f9f9fb">
   <meta name="description" content="Демонстрация управления записями барбершопа QYR.">
   <meta name="robots" content="noindex">
   <title>QYR · Демопанель администратора</title>
   <link rel="icon" href="../../../assets/mark.png" type="image/png">
+  <link rel="stylesheet" href="../../../assets/vendor/design-tokens.css">
   <link rel="stylesheet" href="../../../assets/base.css">
   <link rel="stylesheet" href="../../../assets/barber.css">
-  <link rel="stylesheet" href="../../../assets/admin.css">
   <script src="../../../assets/site-links.js" defer></script>
-  <script src="../../../assets/booking-store.js" defer></script>
-  <script src="../../../assets/admin.js" defer></script>
+  <link rel="stylesheet" href="../../../assets/qyr.css">
+  <link rel="stylesheet" href="../../../assets/showcase.css">
+  <script type="module" src="../../../assets/qyr/crm.js"></script>
 </head>
-<body class="qyr admin">
+<body class="qyr q-crm">
   <a class="skip-link" href="#main">К содержанию</a>
   <header class="demo-bar">
     <nav class="shell" aria-label="Навигация">
@@ -24,34 +25,23 @@
       <div class="languages" role="group" aria-label="Язык сайта"><span aria-current="true" lang="ru" title="Русский">RU</span><a href="../../../kk/demos/qyr/admin/" lang="kk" hreflang="kk" aria-label="Қазақша" data-local-index>KK</a></div>
     </nav>
   </header>
-  <main id="main" class="shell" tabindex="-1">
-    <header class="admin-intro">
-      <h1>Демопанель администратора</h1>
-      <p>Пробные записи сохраняются в этом браузере. Данные реальных клиентов здесь не собираются.</p>
-    </header>
-    <section class="admin-records" aria-labelledby="records-title">
-      <div class="records-head">
-        <h2 id="records-title">Записи</h2>
-        <div class="admin-filters" id="admin-filters" hidden>
-          <label class="field">Фильтр по дате<input type="date" id="date-filter"></label>
-          <label class="field">Статус
-            <select id="status-filter">
-              <option value="all">Все записи</option>
-              <option value="active">Активные</option>
-              <option value="cancelled">Отменённые</option>
-            </select>
-          </label>
-        </div>
-      </div>
-      <noscript><p class="admin-empty">Для работы демопанели нужен JavaScript.</p></noscript>
-      <p id="admin-notice" class="admin-notice" role="status"></p>
-      <p id="admin-error" class="admin-error" role="alert"></p>
-      <div id="records-empty" class="admin-empty" hidden>
-        <p id="empty-copy"></p>
-        <a id="new-booking" class="button" href="../#booking" data-local-index>Создать пробную запись <span class="arrow" aria-hidden="true"></span></a>
-      </div>
-      <ul class="records" id="records"></ul>
-    </section>
-  </main>
+  <nav class="shell q-mode" id="qyr-mode" aria-label="Режимы демонстрации"></nav>
+  <div class="shell q-crm-layout">
+    <aside class="q-rail">
+      <nav id="qyr-crm-nav" aria-label="Разделы CRM"></nav>
+      <div id="qyr-global-reset"></div>
+    </aside>
+    <main id="main" tabindex="-1" class="q-crm-main">
+      <header class="q-crm-intro">
+        <h1 id="qyr-crm-heading" tabindex="-1">Панель управления</h1>
+        <p>Пробные данные хранятся в этом браузере.</p>
+      </header>
+      <p id="qyr-notice" class="q-notice" role="status"></p>
+      <section id="qyr-crm-view" aria-labelledby="qyr-crm-heading">
+        <p class="q-muted">Загружаем демо…</p>
+        <noscript><p>Для работы демопанели нужен JavaScript.</p></noscript>
+      </section>
+    </main>
+  </div>
 </body>
 </html>

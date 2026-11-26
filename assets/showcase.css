@@ -1,0 +1,213 @@
+/* Shared interface details, with colors and layouts set by each demo. */
+:root {
+  --frame-radius: clamp(.85rem, 2vw, 1.6rem);
+  --motion-enter: var(--ease-out-4);
+}
+
+.button { border-radius: .45rem; }
+.section-nav a { text-underline-offset: .23em; }
+.languages [aria-current] {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, var(--paper));
+  min-height: 2rem;
+  border-radius: .4rem;
+}
+
+/* Four distinct demo identities */
+.coffee { --paper:var(--sand-2); --accent:var(--bronze-11); }
+.coffee .coffee-hero {
+  margin-top: clamp(.85rem, 2.6vw, 2.1rem);
+  padding: 0;
+  gap: 0;
+  border-radius: var(--frame-radius);
+  overflow: hidden;
+  background: var(--orange-6);
+}
+.coffee .coffee-intro { background: transparent; padding: clamp(1.3rem, 4vw, 4rem); }
+.coffee .coffee-hero img { height: 100%; object-position: 63% 42%; }
+.coffee .coffee-hero :focus-visible { outline-offset: 3px; }
+.coffee .order-total { border: 1px solid var(--rule); border-radius: .65rem; }
+.coffee .order-total > span { display: flex; align-items: baseline; gap: .5rem; }
+.coffee .order-total output { font-size: clamp(1.35rem, 3vw, 1.85rem); margin: 0; }
+.coffee .quantity { border-radius: .45rem; overflow: hidden; }
+.coffee .quantity :focus-visible { outline-offset: -3px; }
+.coffee .order-total button { border-radius: .4rem; }
+
+.interior { --paper:var(--olive-2); }
+.interior .design-hero {
+  padding: 0;
+  gap: 0;
+  margin-top: clamp(.85rem, 2.6vw, 2.1rem);
+  background: var(--olive-3);
+  border-radius: var(--frame-radius);
+  overflow: hidden;
+}
+.interior .design-hero > div { padding: clamp(1.3rem, 4vw, 4rem); }
+.interior .design-hero > img { height: 100%; }
+.interior .design-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 4.85rem);
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+.room-photo { display: block; overflow: hidden; border-radius: .8rem; position: relative; }
+.room-photo:focus-visible { outline-offset: 3px; }
+.room-expand {
+  position: absolute; inset: auto .75rem .75rem auto;
+  display: grid; place-items: center; width: 44px; height: 44px;
+  background: var(--surface); color: var(--ink); border-radius: .5rem;
+}
+.room-dialog {
+  width: min(62rem, calc(100% - 1.3rem));
+  max-height: 92dvh;
+  padding: clamp(.75rem, 2vw, 1.25rem);
+  border: 1px solid var(--rule);
+  border-radius: .85rem;
+  background: var(--surface);
+  color: var(--ink);
+}
+.room-dialog::backdrop { background: rgb(18 27 20 / 75%); }
+.room-dialog-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:.6rem; margin-bottom:.7rem; }
+.room-dialog > img { max-height: 76dvh; object-fit: contain; }
+.interior .design-services summary::marker { color: var(--accent); }
+
+.fit { --paper:var(--grass-2); --accent:var(--grass-11); }
+.fit .fit-intro { padding: 0; gap: 0; overflow: hidden; border-radius: var(--frame-radius); background: var(--grass-12); }
+.fit .fit-intro > div { padding: clamp(1.2rem, 4.5vw, 4rem); }
+.fit .fit-intro img { height: 100%; }
+.fit .fit-intro .button { --accent:var(--lime-9); }
+.fit .session {
+  padding: clamp(.8rem, 2vw, 1.35rem);
+  background: var(--olive-1);
+  border: 1px solid var(--olive-7);
+  border-radius: .7rem;
+}
+.fit #sessions { display: grid; gap: .6rem; }
+.fit .session-clock time { color: var(--accent); }
+.fit #schedule-filter select { background: var(--olive-1); border-radius: .45rem; }
+
+.qyr:not(.q-crm) { --paper:var(--sand-2); }
+.qyr .barber-hero { border-radius: var(--frame-radius); overflow: hidden; }
+.qyr:not(.q-crm) .booking { border-radius: var(--frame-radius); }
+.qyr .q-choice { border-radius: .5rem; }
+.qyr .q-date-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,8.75rem),1fr));
+  gap: .45rem;
+}
+.qyr .q-date-grid .q-choice { align-content: center; min-height: 4.25rem; gap: .18rem; }
+.qyr .q-date-grid .q-choice :is(strong,small) { flex-basis: 100%; }
+.qyr .q-dialog { border-radius: .85rem; }
+.qyr.q-crm .q-rail { border-radius: .85rem; }
+.qyr.q-crm .q-rail li a[aria-current] { border-radius: .4rem; }
+.qyr.q-crm :is(.q-report-section,.q-catalog-item,.q-metrics,.q-tour,.q-calendar-staff) { border-radius: .65rem; }
+.qyr.q-crm .q-metrics { overflow: hidden; }
+.qyr.q-crm .q-badge { border-radius: .3rem; background: var(--q-surface); }
+.qyr.q-crm .q-visit { border: 1px solid var(--q-line); border-radius: .4rem; }
+
+@media (min-width: 50rem) {
+  .coffee .coffee-hero { grid-template-columns: minmax(0,.83fr) minmax(0,1.17fr); }
+  .interior .design-hero {
+    grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr);
+    gap: clamp(1rem,3.8vw,3.75rem);
+    overflow: visible;
+    background: transparent;
+  }
+  .interior .design-hero > div { padding-inline: 0; }
+  .interior .design-hero > img { border-radius: var(--frame-radius); }
+  .fit .fit-intro { grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); }
+  .fit .fit-intro img { min-height: 20rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-enter { animation: none; }
+  .hero-enter > :first-child { animation: showcase-copy 520ms var(--motion-enter) both; }
+  .hero-enter > img { animation: showcase-image 640ms var(--motion-enter) both; }
+  .room-photo img { transition: transform 350ms var(--motion-enter); }
+  .qyr [data-step-enter], .qyr .q-dialog[open], .room-dialog[open] { animation: interface-enter 210ms var(--motion-enter) both; }
+  @media (hover: hover) {
+    .room-photo:hover img { transform: scale(1.035); }
+  }
+  @keyframes showcase-copy { from { opacity:.72; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+  @keyframes showcase-image { from { clip-path: inset(4% 2% round 12px); } to { clip-path: inset(0); } }
+  @keyframes interface-enter { from { opacity:.7; transform: translateY(5px); } to { opacity:1; transform: none; } }
+}
+
+/* Sary's cafe sign, Forma's architectural spread, Qadam's track and QYR's portrait. */
+.coffee { --paper: var(--brown-2); --ink: var(--orange-12); --accent: var(--brown-11); --surface: var(--brown-1); }
+.coffee .coffee-hero { background: var(--orange-6); color: var(--orange-12); align-items: stretch; border-radius: 0; }
+.coffee .coffee-intro { align-self: center; padding: clamp(1.5rem,4.8vw,5rem); }
+.coffee .coffee-hero h1 { font: 500 clamp(3.6rem,8.4vw,8.8rem)/.83 Georgia,serif; letter-spacing: -.09em; }
+.coffee .coffee-hero h1 em { display: block; margin-left: .18em; font-weight: 400; }
+.coffee .coffee-hero img { width: 88%; height: 88%; margin: auto; border-radius: 42% 42% 0 0; }
+.coffee .menu-category { padding: clamp(.8rem,2.2vw,2rem); border: 1px solid var(--ink); background: var(--surface); }
+.coffee .menu-category h3 { font-size: clamp(1.8rem,3.5vw,3.3rem); font-style: italic; }
+.coffee .order-total { background: var(--orange-12); color: var(--brown-2); border-radius: 0; }
+.coffee .order-total p, .coffee .order-total button:disabled { color: var(--brown-5); }
+.coffee .order-total button:enabled:hover { background: var(--brown-2); color: var(--orange-12); }
+.coffee .order-total :focus-visible { outline-color: var(--orange-6); }
+
+.interior { --paper: var(--olive-1); --ink: var(--olive-12); --accent: var(--grass-12); }
+.interior .design-hero { display: grid; grid-template-columns: minmax(0,1fr); isolation: isolate; position: relative; overflow: hidden; background: var(--olive-5); border-radius: 0; }
+.interior .design-hero > img { grid-area: 1/1; align-self: stretch; aspect-ratio: auto; height: 100%; object-position: center; }
+.interior .design-hero > div { grid-area: 1/1; z-index: 1; align-self: end; width: min(90%,39rem); margin: clamp(.7rem,3vw,3rem); padding: clamp(1.05rem,3.7vw,3.8rem); background: var(--paper); border-left: 3px solid var(--ink); }
+.interior .design-hero { min-height: clamp(28rem,47vw,43rem); }
+.interior .design-hero h1 { font: 400 clamp(2.35rem,5.4vw,5.7rem)/.94 Georgia,serif; letter-spacing: -.065em; }
+.interior .design-hero > img, .interior .room-photo { border-radius: 0; }
+.interior .design-actions { margin-top: 1rem; }
+.interior .room-grid figcaption { padding: 1rem 0; }
+.interior .room-grid figcaption h3 { font: 400 clamp(1.6rem,3.5vw,3.1rem)/1 Georgia,serif; }
+.fit { --paper: var(--sand-2); --ink: var(--grass-12); --accent: var(--grass-11); }
+.fit .fit-intro { background: var(--lime-9); color: var(--grass-12); border-radius: 0; }
+.fit .fit-intro :focus-visible { outline-color: var(--grass-12); }
+.fit .fit-intro p { color: var(--olive-12); }
+.fit .fit-intro .button { background: var(--grass-12); color: var(--lime-3); }
+.fit .fit-intro .button:hover { background: var(--grass-11); }
+.fit .fit-intro h1 { font-weight: 870; line-height: .96; letter-spacing: -.065em; }
+.fit .fit-intro img { filter: grayscale(1); }
+.fit #sessions { gap: 0; border-top: 2px solid var(--ink); }
+.fit .session { border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: transparent; padding-inline: .6rem; }
+.fit .session-clock time { font-style: italic; font-weight: 790; }
+.qyr:not(.q-crm) .barber-hero { border-radius: 0; background: var(--sand-12); }
+.qyr:not(.q-crm) .hero-copy { border-inline-start: .3rem solid var(--bronze-8); }
+.qyr:not(.q-crm) .hero-copy h1 { font-style: italic; }
+.qyr:not(.q-crm) .booking { border-radius: 0; border-top: .3rem solid var(--accent); }
+.qyr.q-crm .q-rail { border-inline-start: .25rem solid var(--accent); }
+.qyr.q-crm .q-crm-intro { border-bottom: 2px solid var(--ink); padding-bottom: 1rem; }
+
+@media(min-width:50rem) {
+  .coffee .coffee-hero { grid-template-columns: 1.05fr .95fr; min-height: clamp(26rem,40vw,36rem); }
+  .coffee .coffee-hero img { max-height: 31rem; }
+  .fit .fit-intro img { clip-path: polygon(18% 0,100% 0,100% 100%,0 100%); }
+  .qyr:not(.q-crm) .barber-hero { grid-template-columns: 1.12fr .88fr; }
+  .qyr:not(.q-crm) .barber-hero > img { order: -1; object-position: 60% 46%; }
+}
+@media(max-width:49.99rem) {
+  .coffee .coffee-hero { grid-template-columns: minmax(0,1.07fr) minmax(0,.93fr); }
+  .coffee .coffee-intro { padding: clamp(1rem,4.2vw,2.1rem); }
+  .coffee .coffee-hero h1 { font-size: clamp(2.8rem,9vw,4.8rem); }
+  .coffee .coffee-hero .button { padding: .45rem .6rem; gap: .45rem; }
+  .coffee .visit { gap: .25rem .5rem; }
+  .coffee .visit span + span { padding-inline-start: 0; border: 0; }
+  .coffee .coffee-hero img { height: 82%; width: 91%; margin-right: .5rem; }
+  .fit .fit-intro img { max-height: 13rem; clip-path: polygon(0 13%,100% 0,100% 100%,0 100%); }
+}
+@media(prefers-reduced-motion:no-preference) {
+  .coffee .hero-enter > img { animation: cafe-frame .9s var(--ease) both; }
+  .interior .design-hero > div { animation: floorplan-in .85s var(--ease) both; }
+  .fit .fit-intro > img { animation: track-in .75s var(--ease) both; }
+  .qyr:not(.q-crm) .hero-copy h1 { animation: floorplan-in .8s var(--ease) both; }
+  @keyframes cafe-frame { from { opacity: .4; transform: translateY(6%) scale(.94); } to { opacity: 1; transform: none; } }
+  @keyframes floorplan-in { from { opacity: .3; transform: translateY(1.8rem); } to { opacity: 1; transform: none; } }
+  @keyframes track-in { from { opacity: .35; transform: translateX(10%); } to { opacity: 1; transform: none; } }
+}
+/* Let controls keep a recognizable silhouette across each identity. */
+.coffee .coffee-hero .button { --button-bg: var(--orange-12); --button-ink: var(--orange-2); }
+.coffee .quantity { border-color: var(--brown-8); }
+.interior .design-actions .button { --button-radius: 0; --button-bg: var(--olive-12); }
+.fit .session-clock time { color: var(--grass-12); }
+.qyr .q-choice[aria-pressed="true"] { box-shadow: inset 3px 0 0 var(--accent); }
+.qyr.q-crm .q-rail { border-inline-start: 0; }
+.qyr.q-crm .q-rail li a[aria-current] { color: var(--accent); background: var(--q-step); }
+.qyr.q-crm .q-visit { border-inline-start: 3px solid var(--q-status,var(--control)); }
+
+.coffee .coffee-hero p { color: var(--brown-12); }
+.fit .languages [aria-current] { color: var(--grass-12); }

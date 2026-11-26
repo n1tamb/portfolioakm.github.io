@@ -1,29 +1,29 @@
 .coffee {
-  --paper: #f3f1ee;
-  --ink: #2d2116;
-  --muted: #5d4834;
-  --rule: #cbb99b;
-  --surface: #fff7e7;
-  --accent: #9a3c24;
-  --control: #826b53;
+  --paper: var(--brown-2);
+  --ink: var(--brown-12);
+  --muted: var(--brown-11);
+  --rule: var(--brown-7);
+  --surface: var(--brown-1);
+  --accent: var(--bronze-11);
+  --control: var(--brown-11);
 }
 .interior {
-  --paper: #edf0ea;
-  --ink: #252c24;
-  --muted: #515c4f;
-  --rule: #b7bbae;
-  --surface: #f9f8f0;
-  --accent: #3e553a;
-  --control: #717a6b;
+  --paper: var(--olive-2);
+  --ink: var(--olive-12);
+  --muted: var(--olive-11);
+  --rule: var(--olive-7);
+  --surface: var(--olive-1);
+  --accent: var(--grass-12);
+  --control: var(--olive-9);
 }
 .fit {
-  --paper: #f0f3ec;
-  --ink: #12281e;
-  --muted: #42584a;
-  --rule: #bdc8bb;
-  --surface: #e4ebdf;
-  --accent: #25553a;
-  --control: #6b7d6c;
+  --paper: var(--sand-2);
+  --ink: var(--grass-12);
+  --muted: var(--olive-11);
+  --rule: var(--olive-7);
+  --surface: var(--olive-3);
+  --accent: var(--grass-11);
+  --control: var(--olive-9);
 }
 
 .coffee-hero, .design-hero, .fit-intro {
@@ -49,7 +49,7 @@
 .coffee-hero h1, .design-hero h1, .interior h2 { font-family: var(--serif); font-weight: 400; }
 .coffee-intro {
   padding: clamp(1.1rem, 3vw, 2.9rem);
-  background: #efd591;
+  background: var(--orange-6);
 }
 .coffee-hero h1 { font-size: clamp(2.55rem, 6vw, 5.25rem); }
 .coffee-hero img { aspect-ratio: 5 / 4; object-position: 58% 40%; }
@@ -65,15 +65,15 @@
 .design-actions { display: flex; flex-wrap: wrap; gap: .5rem 1.15rem; align-items: center; }
 .fit-intro {
   padding: clamp(1.5rem, 4vw, 3.5rem);
-  background: #19392b;
-  color: #f3f6eb;
+  background: var(--grass-12);
+  color: var(--lime-2);
   margin-block: 1.25rem 0;
-  --accent: #d4ee99;
-  --on-accent: #152a21;
+  --accent: var(--lime-9);
+  --on-accent: var(--grass-12);
 }
 .fit-intro :focus-visible { outline-color: var(--accent); }
-.fit-intro .button:hover { background: #f3f6eb; color: #152a21; }
-.fit-intro p { color: #d5e7d8; }
+.fit-intro .button:hover { background: var(--lime-2); color: var(--grass-12); }
+.fit-intro p { color: var(--grass-4); }
 .fit-intro img { aspect-ratio: 5 / 3; object-position: 42% center; }
 .fit-intro h1 { font-size: clamp(2.35rem, 7vw, 5.35rem); }
 

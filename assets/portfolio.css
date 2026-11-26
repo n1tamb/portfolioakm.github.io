@@ -1,8 +1,8 @@
 .portfolio {
-  --paper: #f2f4f9;
-  --ink: #151831;
-  --muted: #4d5165;
-  --rule: #bfc0c8;
+  --paper: var(--sand-2);
+  --ink: var(--slate-12);
+  --muted: var(--slate-11);
+  --rule: var(--slate-7);
 }
 .masthead {
   min-height: 4.5rem;
@@ -67,10 +67,10 @@
   object-fit: cover;
   transition: transform 300ms var(--ease);
 }
-.project.barber { --project-ground: #4e3327; }
-.project.coffee { --project-ground: #49382e; }
-.project.interior { --project-ground: #b4a28a; }
-.project.fit { --project-ground: #44493f; }
+.project.barber { --project-ground: var(--brown-12); }
+.project.coffee { --project-ground: var(--brown-12); }
+.project.interior { --project-ground: var(--gold-8); }
+.project.fit { --project-ground: var(--olive-12); }
 .project.barber img { object-position: 53% 48%; }
 .project.coffee img { object-position: 70% 46%; }
 .project-copy {
@@ -116,7 +116,7 @@
   justify-content: space-between;
   gap: .35rem 1.8rem;
 }
-.footer-inner p { max-width: 60ch; color: #e1e2ee; }
+.footer-inner p { max-width: 60ch; color: var(--slate-4); }
 .footer-inner a { min-height: 44px; display: inline-flex; align-items: center; gap: .6rem; }
 @media (min-width: 38rem) {
   .site-nav > a { display: inline-flex; align-items: center; min-height: 44px; font-size: .9rem; }

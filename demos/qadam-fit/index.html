@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f0f3ec">
+  <meta name="theme-color" content="#f9f9f8">
   <title>Qadam Fit · Расписание групповых тренировок</title>
   <meta name="description" content="Расписание тренировок с фильтром по дням.">
 
@@ -20,8 +20,10 @@
   <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/fitness-1280.webp">
   <meta name="twitter:card" content="summary_large_image">
 
+  <link rel="stylesheet" href="../../assets/vendor/design-tokens.css">
   <link rel="stylesheet" href="../../assets/base.css">
   <link rel="stylesheet" href="../../assets/demo.css">
+  <link rel="stylesheet" href="../../assets/showcase.css">
   <script src="../../assets/site-links.js" defer></script>
   <script src="../../assets/demo.js" defer></script>
 </head>
@@ -53,14 +55,11 @@
         <div><h2 id="schedule-heading">Расписание на неделю</h2><p>Расписание для примера. Время указано по UTC+5.</p></div>
         <label id="schedule-filter" hidden>День недели
           <select id="session-day" aria-controls="sessions">
-            <option value="all">Все дни</option>
-          <option value="0">Понедельник</option>
-          <option value="tue">Вторник</option>
-          <option value="1">Среда</option>
-          <option value="thu">Четверг</option>
-          <option value="2">Пятница</option>
-          <option value="3">Суббота</option>
-          <option value="sun">Воскресенье</option>
+              <option value="all">Все дни</option>
+            <option value="0">Понедельник</option>
+            <option value="1">Среда</option>
+            <option value="2">Пятница</option>
+            <option value="3">Суббота</option>
           </select>
         </label>
       </div>
