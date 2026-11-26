@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f3eb">
+  <meta name="theme-color" content="#111113">
   <meta name="description" content="Демосайты для бизнеса в Казахстане. Посмотрите, как клиенты записываются, оформляют заказ и выбирают время.">
   <title>AKMAVREN · Сайты для бизнеса</title>
   <link rel="icon" href="assets/mark.png" type="image/png">
@@ -16,8 +16,9 @@
   <meta property="og:title" content="AKMAVREN · Сайты для бизнеса">
   <meta property="og:description" content="Демосайты для бизнеса в Казахстане. Посмотрите, как клиенты записываются, оформляют заказ и выбирают время.">
   <meta property="og:url" content="https://n1tamb.github.io/portfolioakm.github.io/">
-  <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/barber-1280.webp">
+  <meta property="og:image" content="https://n1tamb.github.io/portfolioakm.github.io/assets/latte-1100.webp">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/vendor/design-tokens.css">
   <link rel="stylesheet" href="assets/base.css">
   <link rel="stylesheet" href="assets/studio.css">
   <script src="assets/studio.js" defer></script>
@@ -25,39 +26,42 @@
 </head>
 <body class="portfolio">
   <a class="skip-link" href="#projects">К проектам</a>
-  <header class="shell studio-header">
-    <a class="wordmark" href="./" data-local-index aria-label="AKMAVREN"><i class="studio-mark" aria-hidden="true"></i>AKMAVREN</a>
-    <nav aria-label="Навигация"><a href="#projects">Все проекты</a><div class="languages" role="group" aria-label="Язык сайта"><span aria-current="true" lang="ru" title="Русский">RU</span><a href="kk/" data-local-index data-keep-section lang="kk" hreflang="kk" aria-label="Қазақша">KK</a></div></nav>
-  </header>
-  <main class="shell">
-    <section class="studio-hero" aria-labelledby="intro-title">
+  <div class="studio-dark">
+    <header class="shell studio-header">
+      <a class="wordmark" href="./" data-local-index aria-label="AKMAVREN"><i class="studio-mark" aria-hidden="true"></i><span>AKMAVREN</span></a>
+      <nav aria-label="Навигация"><a href="#projects">Проекты</a><a href="#management">CRM</a><div class="languages" role="group" aria-label="Язык сайта"><span aria-current="true" lang="ru" title="Русский">RU</span><a href="kk/" data-local-index data-keep-section lang="kk" hreflang="kk" aria-label="Қазақша">KK</a></div></nav>
+    </header>
+    <section class="shell studio-hero" aria-labelledby="intro-title">
       <div class="studio-intro">
-        <p class="studio-tag">Интерактивное портфолио</p>
-        <h1 id="intro-title"><span>Бизнес</span> <em>в действии.</em></h1>
-        <p class="studio-lead">Четыре сайта для бизнеса в Казахстане. Закажите кофе, выберите тренировку или запишитесь к мастеру — всё можно попробовать.</p>
-        <a class="index-link" href="#projects">Все демопроекты<span aria-hidden="true">↓</span></a>
+        <h1 id="intro-title"><span>Сайты для</span> <em>бизнеса.</em></h1>
+        <p class="studio-lead">Пройдите путь клиента сами. Соберите заказ, откройте галерею, выберите тренировку или запишитесь к мастеру.</p>
+        <a class="button studio-cta" href="#projects">Выбрать демо<i aria-hidden="true"></i></a>
       </div>
       <div class="project-player" aria-label="Предпросмотр проектов" role="region">
         <div class="poster-stack">
-          <a class="poster poster-coffee" href="demos/sary-coffee/" data-local-index  aria-label="Sary Coffee · Открыть кофейню">
-            <img src="assets/coffee-1280.webp" width="640" height="427" alt="" fetchpriority="high" >
-            <span class="poster-label">Кофейня</span><strong class="poster-name" translate="no"><b>Sary</b> <b>Coffee</b></strong>
-            <span class="poster-action">Открыть кофейню <i aria-hidden="true"></i></span>
+          <a class="poster poster-sary-coffee" href="demos/sary-coffee/" data-local-index aria-label="Sary Coffee · Открыть сайт">
+            <span class="preview-browser">
+              <span class="browser-bar"><span class="browser-dots" aria-hidden="true"></span><span translate="no">Sary Coffee</span><i aria-hidden="true"></i></span>
+              <img src="assets/previews/sary-coffee-ru.webp" width="1060" height="598" alt="" fetchpriority="high">
+            </span>
           </a>
-          <a class="poster poster-interior" href="demos/forma/" data-local-index hidden aria-label="Forma · Открыть студию">
-            <img src="assets/interior-640.webp" width="640" height="427" alt="" loading="lazy" >
-            <span class="poster-label">Студия интерьеров</span><strong class="poster-name" translate="no"><b>Forma</b></strong>
-            <span class="poster-action">Открыть студию <i aria-hidden="true"></i></span>
+          <a class="poster poster-forma poster-interior" href="demos/forma/" data-local-index hidden aria-label="Forma · Открыть сайт">
+            <span class="preview-browser">
+              <span class="browser-bar"><span class="browser-dots" aria-hidden="true"></span><span translate="no">Forma</span><i aria-hidden="true"></i></span>
+              <img src="assets/previews/forma-ru.webp" width="1060" height="598" alt="" loading="lazy">
+            </span>
           </a>
-          <a class="poster poster-fit" href="demos/qadam-fit/" data-local-index hidden aria-label="Qadam Fit · Открыть фитнес-студию">
-            <img src="assets/fitness-640.webp" width="640" height="427" alt="" loading="lazy" >
-            <span class="poster-label">Фитнес-студия</span><strong class="poster-name" translate="no"><b>Qadam</b> <b>Fit</b></strong>
-            <span class="poster-action">Открыть фитнес-студию <i aria-hidden="true"></i></span>
+          <a class="poster poster-qadam-fit" href="demos/qadam-fit/" data-local-index hidden aria-label="Qadam Fit · Открыть сайт">
+            <span class="preview-browser">
+              <span class="browser-bar"><span class="browser-dots" aria-hidden="true"></span><span translate="no">Qadam Fit</span><i aria-hidden="true"></i></span>
+              <img src="assets/previews/qadam-fit-ru.webp" width="1060" height="598" alt="" loading="lazy">
+            </span>
           </a>
-          <a class="poster poster-barber" href="demos/qyr/" data-local-index hidden aria-label="QYR · Открыть барбершоп">
-            <img src="assets/barber-640.webp" width="640" height="427" alt="" loading="lazy" >
-            <span class="poster-label">Барбершоп</span><strong class="poster-name" translate="no"><b>QYR</b></strong>
-            <span class="poster-action">Открыть барбершоп <i aria-hidden="true"></i></span>
+          <a class="poster poster-qyr" href="demos/qyr/" data-local-index hidden aria-label="QYR · Открыть сайт">
+            <span class="preview-browser">
+              <span class="browser-bar"><span class="browser-dots" aria-hidden="true"></span><span translate="no">QYR</span><i aria-hidden="true"></i></span>
+              <img src="assets/previews/qyr-ru.webp" width="1060" height="598" alt="" loading="lazy">
+            </span>
           </a>
         </div>
         <div class="player-controls" hidden role="group" aria-label="Выбрать проект">
@@ -68,32 +72,85 @@
         </div>
       </div>
     </section>
-    <section id="projects" tabindex="-1" aria-labelledby="projects-title">
-      <header class="index-head"><h2 id="projects-title">Каталог проектов</h2></header>
+  </div>
+  <main>
+    <section class="shell project-catalog" id="projects" tabindex="-1" aria-labelledby="projects-title">
+      <header class="section-title"><h2 id="projects-title">Демопроекты</h2><p>Выберите действие и попробуйте его прямо здесь.</p></header>
       <ul class="project-index">
-        <li><a class="index-project" id="work-sary-coffee" href="demos/sary-coffee/" data-local-index>
-          <img src="assets/coffee-640.webp" width="120" height="72" loading="lazy" alt="">
-          <span><small>Кофейня</small><strong translate="no">Sary Coffee</strong></span>
-          <span class="index-purpose">Меню и заказ</span><span class="index-open">Открыть</span>
-        </a></li>
-        <li><a class="index-project" id="work-forma" href="demos/forma/" data-local-index>
-          <img src="assets/interior-640.webp" width="120" height="72" loading="lazy" alt="">
-          <span><small>Студия интерьеров</small><strong translate="no">Forma</strong></span>
-          <span class="index-purpose">Галерея интерьеров</span><span class="index-open">Открыть</span>
-        </a></li>
-        <li><a class="index-project" id="work-qadam-fit" href="demos/qadam-fit/" data-local-index>
-          <img src="assets/fitness-640.webp" width="120" height="72" loading="lazy" alt="">
-          <span><small>Фитнес-студия</small><strong translate="no">Qadam Fit</strong></span>
-          <span class="index-purpose">Расписание занятий</span><span class="index-open">Открыть</span>
-        </a></li>
-        <li><a class="index-project" id="work-qyr" href="demos/qyr/" data-local-index>
-          <img src="assets/barber-640.webp" width="120" height="72" loading="lazy" alt="">
-          <span><small>Барбершоп</small><strong translate="no">QYR</strong></span>
-          <span class="index-purpose">Онлайн-запись и CRM</span><span class="index-open">Открыть</span>
-        </a></li>
+        <li class="catalog-item">
+          <a class="catalog-image" href="demos/sary-coffee/" data-local-index aria-label="Sary Coffee · Открыть сайт"><img src="assets/latte-640.webp" width="640" height="423" loading="lazy" alt=""></a>
+          <div class="catalog-copy">
+            <p class="catalog-category">Кофейня</p>
+            <h3 translate="no">Sary Coffee</h3>
+            <p class="catalog-purpose">Меню с расчётом заказа</p>
+            <div class="catalog-actions">
+              <a class="button" id="work-sary-coffee" href="demos/sary-coffee/#menu" data-local-index data-demo-preview data-demo-title="Sary Coffee">Собрать заказ</a>
+              <a class="text-link catalog-link" href="demos/sary-coffee/" data-local-index>Сайт<i aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li class="catalog-item">
+          <a class="catalog-image" href="demos/forma/" data-local-index aria-label="Forma · Открыть сайт"><img src="assets/interior-640.webp" width="640" height="423" loading="lazy" alt=""></a>
+          <div class="catalog-copy">
+            <p class="catalog-category">Студия интерьеров</p>
+            <h3 translate="no">Forma</h3>
+            <p class="catalog-purpose">Портфолио с полноэкранной галереей</p>
+            <div class="catalog-actions">
+              <a class="button" id="work-forma" href="demos/forma/#gallery" data-local-index data-demo-preview data-demo-title="Forma">Открыть галерею</a>
+              <a class="text-link catalog-link" href="demos/forma/" data-local-index>Сайт<i aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li class="catalog-item">
+          <a class="catalog-image" href="demos/qadam-fit/" data-local-index aria-label="Qadam Fit · Открыть сайт"><img src="assets/fitness-640.webp" width="640" height="423" loading="lazy" alt=""></a>
+          <div class="catalog-copy">
+            <p class="catalog-category">Фитнес-студия</p>
+            <h3 translate="no">Qadam Fit</h3>
+            <p class="catalog-purpose">Расписание с фильтром по дням</p>
+            <div class="catalog-actions">
+              <a class="button" id="work-qadam-fit" href="demos/qadam-fit/#schedule" data-local-index data-demo-preview data-demo-title="Qadam Fit">Выбрать занятие</a>
+              <a class="text-link catalog-link" href="demos/qadam-fit/" data-local-index>Сайт<i aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
+        <li class="catalog-item">
+          <a class="catalog-image" href="demos/qyr/" data-local-index aria-label="QYR · Открыть сайт"><img src="assets/barber-640.webp" width="640" height="423" loading="lazy" alt=""></a>
+          <div class="catalog-copy">
+            <p class="catalog-category">Барбершоп</p>
+            <h3 translate="no">QYR</h3>
+            <p class="catalog-purpose">Онлайн-запись и управление визитами</p>
+            <div class="catalog-actions">
+              <a class="button" id="work-qyr" href="demos/qyr/#booking" data-local-index data-demo-preview data-demo-title="QYR">Записаться</a>
+              <a class="text-link catalog-link" href="demos/qyr/" data-local-index>Сайт<i aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </li>
       </ul>
     </section>
+    <section class="management studio-dark" id="management" aria-labelledby="management-title">
+      <div class="shell management-layout">
+        <div>
+          <p class="management-label" translate="no">QYR / CRM</p>
+          <h2 id="management-title">Запись глазами бизнеса</h2>
+          <p>Создайте запись на сайте QYR. Она появится в календаре CRM этого браузера, где можно перенести визит или отметить его как завершённый.</p>
+          <a class="button studio-cta" href="demos/qyr/admin/#dashboard" data-local-index data-demo-preview data-demo-title="QYR CRM">Открыть CRM<i aria-hidden="true"></i></a>
+        </div>
+        <a class="management-screen" href="demos/qyr/admin/#dashboard" data-local-index aria-label="Открыть CRM QYR на отдельной странице"><img src="assets/previews/crm-ru.webp" width="1060" height="683" loading="lazy" alt=""></a>
+      </div>
+    </section>
   </main>
-  <footer class="shell studio-footer"><span>AKMAVREN · Казахстан</span><a href="https://github.com/n1tamb/portfolioakm.github.io">Код на GitHub</a></footer>
+  <footer class="shell studio-footer">
+    <a class="wordmark" href="./" data-local-index>AKMAVREN</a>
+    <span>Демонстрационные проекты · Казахстан</span>
+    <a href="https://github.com/n1tamb/portfolioakm.github.io">GitHub</a>
+  </footer>
+  <dialog class="demo-preview" aria-labelledby="preview-title" data-frame-label="Демосайт">
+    <div class="preview-toolbar">
+      <h2 id="preview-title" translate="no"></h2>
+      <a class="text-link preview-full" href="./">Открыть отдельно<i aria-hidden="true"></i></a>
+      <form method="dialog"><button class="button secondary" autofocus>Закрыть</button></form>
+    </div>
+    <div class="preview-viewport"></div>
+  </dialog>
 </body>
 </html>

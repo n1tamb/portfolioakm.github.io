@@ -139,6 +139,9 @@ function render(focus=false) {
   panel.setAttribute('aria-labelledby','qyr-crm-heading');
   updateLanguage();
   if(focus && shown!==view) {
+    if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      panel.animate([{opacity: .5}, {opacity: 1}], {duration: 200, easing: getComputedStyle(panel).getPropertyValue('--ease-3').trim()});
+    }
     heading.focus({preventScroll:true});
     heading.scrollIntoView({block:'start'});
   }

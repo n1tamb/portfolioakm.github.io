@@ -281,6 +281,42 @@ try {
   }
   await demoPage.keyboard.press('ArrowRight');
   assert.equal(await picker.locator('button').first().getAttribute('aria-pressed'), 'true');
+  for (const [slug, section] of [['sary-coffee','menu'],['forma','gallery'],['qadam-fit','schedule'],['qyr','booking']]) {
+    const opener = demoPage.locator('#work-'+slug);
+    await opener.click();
+    const overlay = demoPage.getByRole('dialog');
+    const frame = overlay.locator('iframe');
+    assert.match(await frame.getAttribute('src'), new RegExp('/'+slug+'/#'+section+'$'));
+    const embedded = demoPage.frameLocator('.demo-preview iframe');
+    await embedded.locator('#'+section).waitFor();
+    if (slug === 'sary-coffee') {
+      await embedded.locator('[data-step="1"]').first().click();
+      assert.match(await embedded.locator('#price-total').innerText(), /1\s200/);
+      await demoPage.keyboard.press('Escape');
+    } else {
+      await overlay.getByRole('button',{name:'Закрыть'}).click();
+    }
+    await overlay.waitFor({state:'hidden'});
+    assert.equal(await opener.evaluate(link=>link===document.activeElement),true);
+  }
+  await demoPage.getByRole('link',{name:'Открыть CRM',exact:true}).click();
+  await demoPage.frameLocator('.demo-preview iframe').locator('.q-dashboard-strip').waitFor();
+  await demoPage.getByRole('button',{name:'Закрыть',exact:true}).click();
+  const mobilePage = watch(await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true}));
+  await navigate(mobilePage,'');
+  const stack = mobilePage.locator('.poster-stack');
+  await stack.scrollIntoViewIfNeeded();
+  const rect = await stack.boundingBox();
+  const touch = await mobilePage.context().newCDPSession(mobilePage);
+  const y = rect.y + rect.height / 2;
+  await touch.send('Input.dispatchTouchEvent',{type:'touchStart', touchPoints:[{x:rect.x+rect.width*.8,y}]});
+  await touch.send('Input.dispatchTouchEvent',{type:'touchMove', touchPoints:[{x:rect.x+rect.width*.2,y}]});
+  await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await mobilePage.locator('.poster-interior:visible').waitFor();
+  assert.equal(new URL(mobilePage.url()).pathname,prefix);
+  await mobilePage.locator('.poster-interior').tap();
+  await mobilePage.waitForURL(url=>url.pathname.endsWith('/forma/'));
+  await mobilePage.close();
   await navigate(demoPage,'demos/sary-coffee/');
   await demoPage.locator('[data-step="1"]').first().click();
   assert.match(await demoPage.locator('#price-total').innerText(),/1\s200/);

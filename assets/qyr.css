@@ -1,14 +1,8 @@
 .qyr {
-  --q-line: #d3ccc3;
-  --q-soft: #f5f1eb;
-  --q-surface: #fffcf7;
-  --q-ok: #235d3f;
-  --q-blue: #244e79;
-  --q-warn: #814519;
-  --q-danger: #902d27;
-  --q-quiet: #62574d;
-  --q-step: #e8ddd1;
-  --q-rail: #e7e1da;
+  --q-line: var(--sand-6); --q-soft: var(--sand-3); --q-surface: var(--sand-1);
+  --q-ok: var(--grass-11); --q-blue: var(--blue-11); --q-warn: var(--amber-11);
+  --q-danger: var(--red-11); --q-quiet: var(--sand-11);
+  --q-step: var(--bronze-4); --q-rail: var(--sand-3);
 }
 .qyr .q-muted { color: var(--muted); font-size: .935rem; }
 .qyr .q-muted:empty { display: none; }
@@ -157,13 +151,20 @@
 .q-dialog-body { min-width: 0; }
 .q-dialog details summary { margin-bottom: .35rem; }
 
-.q-crm { --paper: #f2f2f1; --surface: #fffcf8; --q-surface: #fffcf8; }
+.q-crm {
+  --paper: var(--slate-2); --surface: var(--slate-1); --ink: var(--slate-12); --muted: var(--slate-11);
+  --accent: var(--iris-10); --on-accent: var(--iris-1); --rule: var(--slate-7); --control: var(--slate-9);
+  --q-surface: var(--slate-1); --q-rail: var(--slate-3); --q-soft: var(--slate-3);
+  --q-line: var(--slate-6); --q-step: var(--iris-3);
+}
 :root[data-q-theme="dark"] { color-scheme: dark; }
 :root[data-q-theme="dark"] .q-crm {
-  --paper:#211d1a; --surface:#2d2723; --ink:#f5ede4; --muted:#d0bfb0;
-  --rule:#665746; --control:#b89d84; --accent:#edbd91; --on-accent:#241a13;
-  --q-line:#665746; --q-soft:#332b25; --q-surface:#2d2723; --q-step:#49392e;
-  --q-ok:#a9d7b7; --q-blue:#accbe9; --q-warn:#efbc83; --q-danger:#ffbcb3; --q-quiet:#d6c6b8; --q-rail:#332b25;
+  --paper: var(--dark-slate-1); --surface: var(--dark-slate-2); --ink: var(--dark-slate-12); --muted: var(--dark-slate-11);
+  --accent: var(--dark-iris-11); --on-accent: var(--dark-iris-1); --rule: var(--dark-slate-7); --control: var(--dark-slate-9);
+  --q-surface: var(--dark-slate-2); --q-line: var(--dark-slate-6); --q-soft: var(--dark-slate-3);
+  --q-step: var(--dark-iris-4); --q-rail: var(--dark-slate-3);
+  --q-ok: var(--dark-grass-11); --q-blue: var(--dark-blue-11); --q-warn: var(--dark-amber-11);
+  --q-danger: var(--dark-red-11); --q-quiet: var(--dark-slate-11);
 }
 .q-crm-layout { display: grid; gap: 1rem; padding-block: 1rem 3rem; }
 .q-rail { background: var(--q-rail); align-self: start; padding: .55rem .65rem; min-width: 0; }
@@ -289,3 +290,18 @@
 @media (max-width: 47.999rem) {
   .qyr .section-nav a[href="#booking"] { text-decoration: none; padding-inline: .48rem; color: var(--on-accent); background: var(--accent); }
 }
+
+.q-rail li a { justify-content: flex-start; gap: .6rem; }
+.q-rail .q-unread { margin-inline-start: auto; }
+.q-rail li a::before { content: ""; width: 1.05rem; height: 1.05rem; flex: none; background: currentColor; mask: var(--nav-icon) center / contain no-repeat; }
+.q-rail [data-q-view="dashboard"] { --nav-icon: url("vendor/icons/grid.svg"); }
+.q-rail [data-q-view="calendar"] { --nav-icon: url("vendor/icons/calendar3.svg"); }
+.q-rail [data-q-view="bookings"] { --nav-icon: url("vendor/icons/journal-check.svg"); }
+.q-rail [data-q-view="clients"] { --nav-icon: url("vendor/icons/people.svg"); }
+.q-rail [data-q-view="staff"] { --nav-icon: url("vendor/icons/person-badge.svg"); }
+.q-rail [data-q-view="services"] { --nav-icon: url("vendor/icons/scissors.svg"); }
+.q-rail [data-q-view="finance"] { --nav-icon: url("vendor/icons/wallet2.svg"); }
+.q-rail [data-q-view="analytics"] { --nav-icon: url("vendor/icons/bar-chart.svg"); }
+.q-rail [data-q-view="notifications"] { --nav-icon: url("vendor/icons/bell.svg"); }
+.q-rail [data-q-view="site"] { --nav-icon: url("vendor/icons/window.svg"); }
+.q-rail [data-q-view="settings"] { --nav-icon: url("vendor/icons/sliders.svg"); }
