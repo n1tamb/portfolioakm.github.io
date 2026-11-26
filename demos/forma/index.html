@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="../../assets/modern.css">
   <script src="../../assets/site-links.js" defer></script>
   <script src="../../assets/motion.js" defer></script>
+  <script src="../../assets/scenarios.js" defer></script>
 </head>
 <body class="interior">
   <a class="skip-link" href="#main">К содержанию</a>
@@ -38,6 +39,7 @@
   <nav class="section-nav shell" aria-label="Разделы страницы">
     <a class="text-link" href="#gallery">Интерьеры</a>
     <a class="text-link" href="#packages">Услуги</a>
+    <a class="text-link" href="#case">О проекте</a>
   </nav>
   <main class="shell" id="main" tabindex="-1">
     <section class="design-hero hero-enter">
@@ -54,15 +56,21 @@
          sizes="(min-width: 66rem) 61vw, 92vw" width="1280" height="960" alt="Светлая гостиная с мягкими креслами, диваном и широкими окнами" fetchpriority="high">
     </section>
     <section class="page-section room-gallery" id="gallery" aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading">Кухня и спальня</h2>
-      <div class="room-grid">
-        <figure>
+      <h2 id="gallery-heading">Интерьеры по комнатам</h2>
+      <div class="room-grid" id="rooms">
+        <figure data-room="living">
+          <img src="../../assets/interior-1280.webp"
+         srcset="../../assets/interior-640.webp 640w, ../../assets/interior-1280.webp 1280w"
+         sizes="(min-width: 68rem) 81rem, 92vw" width="1280" height="960" alt="Светлая гостиная с мягкими креслами, диваном и широкими окнами" loading="lazy" decoding="async">
+          <figcaption><h3>Гостиная</h3><p>Мягкая мебель, растения и много дневного света.</p></figcaption>
+        </figure>
+        <figure data-room="kitchen">
           <img src="../../assets/forma-kitchen-1280.webp"
          srcset="../../assets/forma-kitchen-640.webp 640w, ../../assets/forma-kitchen-1280.webp 1120w"
          sizes="(min-width: 68rem) 40vw, (min-width: 48rem) 48vw, 92vw" width="1120" height="840" alt="Кухня" loading="lazy" decoding="async">
           <figcaption><h3>Кухня</h3><p>Остров объединяет рабочую зону и место для завтрака.</p></figcaption>
         </figure>
-        <figure>
+        <figure data-room="bedroom">
           <img src="../../assets/forma-bedroom-1280.webp"
          srcset="../../assets/forma-bedroom-640.webp 640w, ../../assets/forma-bedroom-1280.webp 1120w"
          sizes="(min-width: 68rem) 40vw, (min-width: 48rem) 48vw, 92vw" width="1120" height="840" alt="Спальня" loading="lazy" decoding="async">
@@ -76,6 +84,32 @@
         <details open><summary>Консультация по планировке</summary><p>Обсуждаем задачи, сценарии жизни и ограничения. После встречи у вас будут рекомендации, с которых можно начать.</p></details>
         <details><summary>Дизайн-проект</summary><p>Планировка, материалы, свет, 3D-визуализации и рабочие чертежи для ремонта.</p></details>
         <details><summary>Сопровождение ремонта</summary><p>Помогаем согласовать решения с подрядчиками и подобрать замены, если материалов нет в наличии.</p></details>
+      </div>
+    </section>
+    <section class="page-section case" id="case" aria-labelledby="case-title">
+      <h2 id="case-title">О проекте</h2>
+      <p>Это демосайт для портфолио. Ниже описано, какую задачу он показывает и что понадобится для настоящего бизнеса.</p>
+      <div class="case-grid">
+        <div class="case-block case-task">
+          <h3>Задача</h3>
+          <p>Посетитель хочет посмотреть интерьеры и понять, с чего начать работу со студией.</p>
+        </div>
+        <div class="case-block">
+          <h3>Что сделано</h3>
+          <ul>
+            <li>Галерея с фильтром по комнатам</li>
+            <li>Три формата работы в раскрывающемся списке</li>
+            <li>Подсказка, что подготовить для начала</li>
+          </ul>
+        </div>
+        <div class="case-block">
+          <h3>Для настоящего бизнеса</h3>
+          <ul>
+            <li>Фото собственных проектов студии вместо иллюстративных</li>
+            <li>Кнопка связи или форма заявки</li>
+            <li>Цены, сроки и фото «до и после» своих объектов</li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>

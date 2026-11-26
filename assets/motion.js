@@ -30,7 +30,7 @@
         setTimeout(() => el.classList.remove('reveal', 'shown'), 900 + n * 80);
       });
     }, { threshold: .08 });
-    for (const el of $$('.work-head, .page-section > h2, .room-grid figure, .design-services > div, .menu-item, .session, .price-list, .team, .booking')) {
+    for (const el of $$('.work-head, .case-block, .page-section > h2, .room-grid figure, .design-services > div, .menu-item, .session, .price-list, .team, .booking')) {
       if (el.getBoundingClientRect().top < innerHeight) continue;
       el.classList.add('reveal');
       observer.observe(el);

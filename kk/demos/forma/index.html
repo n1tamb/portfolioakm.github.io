@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="../../../assets/modern.css">
   <script src="../../../assets/site-links.js" defer></script>
   <script src="../../../assets/motion.js" defer></script>
+  <script src="../../../assets/scenarios.js" defer></script>
 </head>
 <body class="interior">
   <a class="skip-link" href="#main">Мазмұнға өту</a>
@@ -38,6 +39,7 @@
   <nav class="section-nav shell" aria-label="Бет бөлімдері">
     <a class="text-link" href="#gallery">Интерьерлер</a>
     <a class="text-link" href="#packages">Қызметтер</a>
+    <a class="text-link" href="#case">Жоба туралы</a>
   </nav>
   <main class="shell" id="main" tabindex="-1">
     <section class="design-hero hero-enter">
@@ -54,15 +56,21 @@
          sizes="(min-width: 66rem) 61vw, 92vw" width="1280" height="960" alt="Жұмсақ креслолары, диваны және кең терезелері бар жарық қонақ бөлме" fetchpriority="high">
     </section>
     <section class="page-section room-gallery" id="gallery" aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading">Асүй мен жатын бөлме</h2>
-      <div class="room-grid">
-        <figure>
+      <h2 id="gallery-heading">Бөлмелер бойынша интерьерлер</h2>
+      <div class="room-grid" id="rooms">
+        <figure data-room="living">
+          <img src="../../../assets/interior-1280.webp"
+         srcset="../../../assets/interior-640.webp 640w, ../../../assets/interior-1280.webp 1280w"
+         sizes="(min-width: 68rem) 81rem, 92vw" width="1280" height="960" alt="Жұмсақ креслолары, диваны және кең терезелері бар жарық қонақ бөлме" loading="lazy" decoding="async">
+          <figcaption><h3>Қонақ бөлме</h3><p>Жұмсақ жиһаз, өсімдіктер және мол табиғи жарық.</p></figcaption>
+        </figure>
+        <figure data-room="kitchen">
           <img src="../../../assets/forma-kitchen-1280.webp"
          srcset="../../../assets/forma-kitchen-640.webp 640w, ../../../assets/forma-kitchen-1280.webp 1120w"
          sizes="(min-width: 68rem) 40vw, (min-width: 48rem) 48vw, 92vw" width="1120" height="840" alt="Асүй" loading="lazy" decoding="async">
           <figcaption><h3>Асүй</h3><p>Арал жұмыс аймағы мен таңғы ас ішетін орынды біріктіреді.</p></figcaption>
         </figure>
-        <figure>
+        <figure data-room="bedroom">
           <img src="../../../assets/forma-bedroom-1280.webp"
          srcset="../../../assets/forma-bedroom-640.webp 640w, ../../../assets/forma-bedroom-1280.webp 1120w"
          sizes="(min-width: 68rem) 40vw, (min-width: 48rem) 48vw, 92vw" width="1120" height="840" alt="Жатын бөлме" loading="lazy" decoding="async">
@@ -76,6 +84,32 @@
         <details open><summary>Жоспарлау бойынша кеңес</summary><p>Тұрмыс салтыңызды, міндеттер мен шектеулерді талқылаймыз. Кездесуден кейін жұмысты бастауға көмектесетін ұсыныстар аласыз.</p></details>
         <details><summary>Дизайн-жоба</summary><p>Жоспар, материалдар, жарық, 3D-визуализациялар және жөндеуге арналған жұмыс сызбалары.</p></details>
         <details><summary>Жөндеуді сүйемелдеу</summary><p>Мердігерлермен шешімдерді келісуге және материалдар болмаған кезде балама табуға көмектесеміз.</p></details>
+      </div>
+    </section>
+    <section class="page-section case" id="case" aria-labelledby="case-title">
+      <h2 id="case-title">Жоба туралы</h2>
+      <p>Бұл — портфолиоға арналған демосайт. Төменде ол қандай міндетті көрсететіні және нақты бизнеске не қажет болатыны жазылған.</p>
+      <div class="case-grid">
+        <div class="case-block case-task">
+          <h3>Міндет</h3>
+          <p>Келуші интерьерлерді көріп, студиямен жұмысты неден бастау керегін түсінгісі келеді.</p>
+        </div>
+        <div class="case-block">
+          <h3>Не жасалды</h3>
+          <ul>
+            <li>Бөлмелер бойынша сүзгісі бар галерея</li>
+            <li>Ашылатын тізімдегі үш жұмыс түрі</li>
+            <li>Бастау үшін не дайындау керегі туралы кеңес</li>
+          </ul>
+        </div>
+        <div class="case-block">
+          <h3>Нақты бизнес үшін</h3>
+          <ul>
+            <li>Көрнекі фотолардың орнына студияның өз жобаларының фотолары</li>
+            <li>Байланыс батырмасы немесе өтінім формасы</li>
+            <li>Бағалар, мерзімдер және өз нысандарының «дейін және кейін» фотолары</li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
